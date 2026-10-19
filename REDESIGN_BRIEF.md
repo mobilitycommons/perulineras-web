@@ -1,110 +1,41 @@
 # Rediseño web de Perulineras
 
+> **Documento rector:** `REQUISITOS_PERULINERAS.md` (v0.2, 2026-10-19). Este brief solo recoge la dirección visual y el estado de la implementación; ante cualquier conflicto, prevalecen los requisitos.
+
 ## Contexto
 
-Perulineras es una empresa peruana cuyo objetivo es integrar la infraestructura de carga para vehículos eléctricos de distintos proveedores.
+Perulineras es una plataforma de consulta de infraestructura de recarga para vehículos eléctricos en Perú y una empresa de ingeniería e integración de soluciones de recarga.
 
-El antecedente del proyecto es [electromovilidad.la](https://www.electromovilidad.la), desarrollado como observatorio regional de electromovilidad. Perulineras representa la evolución práctica de ese trabajo, enfocada en la infraestructura de carga del Perú.
-
-## Objetivo principal
-
-La página principal debe conducir al usuario al mapa de electrolineras.
-
-Perulineras debe presentarse como una plataforma integradora e independiente, no como una red perteneciente a un único proveedor de carga.
+**electromovilidad.la no se menciona en la web.** Lo único heredado de ese proyecto es el diseño del header (decisión del 2026-10-19).
 
 ## Dirección visual
 
 - Fondo predominantemente blanco.
 - Utilizar el logo oficial de Perulineras.
-- Evitar una interfaz dominada por azul oscuro.
-- Usar azul corporativo para texto, navegación y detalles.
-- Usar rojo como acento y para la acción principal.
-- Apariencia limpia, tecnológica, confiable e institucional.
-- Diseño responsive para escritorio y móvil.
-- Header con el mismo diseño que electromovilidad.la (ver sección Header).
+- Usar azul corporativo para texto, navegación y detalles; rojo como acento y para la acción principal.
+- Apariencia limpia, técnica, confiable y accesible. Responsive.
 
 ## Header
 
-Header con el mismo diseño que electromovilidad.la (decisión del 2026-10-19): barra fija de ancho completo, 52 px de alto, fondo azul marino oscuro, logo en versión para fondo oscuro a la izquierda, navegación centrada en texto pequeño con subrayado en el enlace activo y botones compactos a la derecha. En Perulineras el acento del subrayado es rojo y la tipografía es Manrope, como en el observatorio. El resto de la página mantiene fondo blanco.
+Diseño heredado de electromovilidad.la: barra fija de ancho completo, 52 px de alto, fondo azul marino oscuro, logo para fondo oscuro a la izquierda, navegación centrada en texto pequeño con subrayado rojo en el enlace activo y botones compactos a la derecha. Tipografía Manrope.
 
-Contenido:
-
-- Logo de Perulineras a la izquierda.
-- Navegación:
-  - Mapa
-  - Red de carga
-  - Datos
-  - Nosotros
-- Botón principal rojo: “Ver mapa”.
-- Enlace secundario al “Observatorio electromovilidad.la”.
+- Navegación: Mapa · Instala tu electrolinera · Proveedores · Nosotros.
+- Acciones: «Registra tu empresa» (chip) y «Solicitar evaluación» (botón rojo).
 - Menú móvil accesible.
-- Borde inferior sutil.
 
-## Hero
+## Arquitectura
 
-Mensaje recomendado:
-
-**Una red. Todos los cargadores.**
-
-Texto de apoyo:
-
-> Integramos la infraestructura de carga de diferentes proveedores para que moverse en eléctrico por el Perú sea más simple.
-
-Acciones:
-
-1. “Ver mapa de electrolineras” — acción principal.
-2. “Conoce Perulineras” — acción secundaria.
-
-El hero puede incluir una visualización ligera inspirada en un mapa del Perú, rutas o puntos de carga. No debe usar fotografías genéricas como elemento dominante.
-
-## Secciones propuestas
-
-### Red integrada
-
-Explicar que Perulineras reúne puntos de carga de múltiples operadores y proveedores en una experiencia unificada.
-
-### Información útil
-
-Mostrar que el mapa puede ofrecer, según disponibilidad:
-
-- Ubicación
-- Tipo de conector
-- Potencia
-- Operador
-- Disponibilidad o estado
-- Indicaciones para llegar
-
-No publicar cifras inventadas. Las métricas deben salir de datos reales del mapa.
-
-### Del observatorio a la infraestructura
-
-Explicar brevemente que electromovilidad.la fue el antecedente de investigación y visualización regional, mientras Perulineras convierte ese conocimiento en una herramienta enfocada en Perú.
-
-Enlace:
-
-https://www.electromovilidad.la
-
-### Proveedores y operadores
-
-Invitación a integrar nuevos cargadores o corregir información existente.
-
-CTA sugerido: “Integra tu red”.
+- `/` — portada con el mapa como protagonista, buscador, accesos a buscar / instalar / registrar empresa.
+- `/mapa/` — mapa completo con lista y buscador.
+- `/instala/` — servicio «Te ayudamos a instalar tu electrolinera» y formulario de evaluación.
+- `/proveedores/` — por qué participar, gratuidad inicial, autorización, monetización futura y formulario de incorporación (`#registro`).
+- `/nosotros/` — identidad, estado del proyecto, reportes de estaciones (`#reportar`) y contacto (`#contacto`).
+- `/privacidad/`, `/terminos/` — borradores v0.1 sujetos a revisión legal.
+- `/404.html` — página de error (rutas absolutas).
 
 ## Mapa
 
-La navegación principal debe apuntar al mapa propio de Perulineras.
-
-Mientras no se confirme la URL definitiva, utilizar una ruta interna provisional:
-
-```text
-/mapa
-```
-
-El mapa del antecedente se encuentra en:
-
-https://www.electromovilidad.la/mapa
-
-No usar ese enlace como destino definitivo de Perulineras sin confirmación.
+Ruta propia: `/mapa/`. URL definitiva del dominio: `https://www.perulineras.com` (el apex redirige a `www`).
 
 ## Activos existentes
 
@@ -121,30 +52,19 @@ Contiene las variantes del logo y referencias de color. Conviene exportar poster
 
 No redibujar ni sustituir el logo con texto cuando esté disponible el archivo oficial aislado.
 
-## Implementación actual
+## Criterios de implementación
 
-El repositorio contiene una web provisional estática en `index.html`.
-
-La siguiente implementación debe:
-
-1. Reemplazar el diseño oscuro provisional.
-2. Mantener el sitio sin dependencias si no se necesita un framework.
-3. Usar HTML semántico.
-4. Incluir estados de foco visibles y navegación por teclado.
-5. Mantener buen contraste y rendimiento.
-6. Añadir metadatos básicos para SEO y compartir en redes.
-7. Verificar visualmente escritorio y móvil.
-8. No inventar correo, teléfono, estadísticas, socios ni proveedores.
+- Sitio estático sin dependencias mientras no se necesite un framework; HTML semántico.
+- Foco visible, navegación por teclado, buen contraste y rendimiento.
+- Metadatos para SEO y para compartir (URLs absolutas en `og:*`).
+- No inventar correo, teléfono, estadísticas, socios ni proveedores.
 
 ## Pendientes por confirmar
 
-- URL definitiva del mapa de Perulineras.
+- Servicio de formularios que sustituya al envío por mailto.
+- Datos del titular del banco de datos (razón social, RUC, domicilio) y revisión legal de privacidad y términos.
 - Archivo aislado del logo oficial.
-- Correo de contacto.
-- Proveedores o redes que pueden mostrarse públicamente.
-- Métricas verificadas del mapa.
-- URL definitiva del dominio.
-- Si la web se desplegará mediante Vercel.
+- Proveedores que autoricen su publicación.
 
 ## Repositorio y despliegue
 
@@ -160,9 +80,9 @@ La autenticación Git está configurada mediante GitHub CLI. Nunca guardar contr
 
 ## Estado de la implementación (2026-10-19)
 
-- Rediseño claro implementado en `index.html` y mapa completo en `/mapa/`.
-- Mapa con Leaflet + teselas de OpenStreetMap; datos de electrolineras públicas desde OpenStreetMap (`data/electrolineras.geojson`), excluyendo `access=private/customers/no/permit/delivery`.
-- El conteo de electrolineras se calcula desde los datos reales del mapa.
-- Logo provisional extraído del tablero de marca (`assets/logo-perulineras.png`, versión blanca e isotipo). Sustituir por los archivos oficiales aislados cuando estén disponibles.
-- “Integra tu red” apunta provisionalmente a GitHub Issues hasta confirmar un correo de contacto.
+- Replanteamiento según `REQUISITOS_PERULINERAS.md` (hito B): portada centrada en el mapa, páginas de instalación, proveedores, nosotros, privacidad, términos y 404. Rutas absolutas (`/assets/...`).
+- Mapa con Leaflet + teselas de OpenStreetMap; datos de electrolineras públicas desde OpenStreetMap (`data/electrolineras.geojson`), excluyendo `access=private/customers/no/permit/delivery`. La ficha distingue «no verificado» (por defecto) de «verificado» (si la estación trae `verificacion: {fecha, fuente}`) y marca los campos sin dato como «Desconocido».
+- Contacto: `info@perulineras.com` (`CORREO` en `assets/sitio.js`). Los formularios (evaluación y registro de proveedores) abren el programa de correo del usuario con la solicitud preparada (mailto), como alternativa temporal; sustituir por un servicio de formularios cuando se decida. Si `CORREO` queda vacío, se desactivan con aviso.
+- Privacidad y términos: borradores v0.1; faltan los datos del titular (razón social, RUC, domicilio) y la revisión legal.
+- Logo provisional extraído del tablero de marca. Sustituir por los archivos oficiales aislados cuando estén disponibles.
 - El mapa base usa las teselas públicas de OpenStreetMap (sujeto a su política de uso); con tráfico alto conviene un proveedor de teselas propio o contratado.
