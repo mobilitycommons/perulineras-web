@@ -1,0 +1,49 @@
+{
+  "_ayuda": "Fuentes de datos del mapa. 'publicar': false las conserva en la BD pero las saca del mapa público. 'prioridad': menor número gana al combinar campos (las coordenadas usan 'prioridad_coordenadas').",
+  "fuentes": [
+    {
+      "id": "perulineras",
+      "nombre": "Perulineras",
+      "descripcion": "Altas y verificaciones propias (data/curado/ajustes.json).",
+      "url": "https://www.perulineras.com/",
+      "licencia": "Datos propios",
+      "atribucion": "Perulineras",
+      "publicar": true,
+      "prioridad": 0,
+      "prioridad_coordenadas": 0
+    },
+    {
+      "id": "aap",
+      "nombre": "Asociación Automotriz del Perú (AAP)",
+      "descripcion": "Padrón de electrolineras publicado en aap.org.pe/electrolineras.",
+      "url": "https://aap.org.pe/electrolineras",
+      "licencia": "Sin licencia declarada: datos factuales citados con atribución. Pendiente solicitar autorización a la AAP.",
+      "atribucion": "Padrón de electrolineras de la Asociación Automotriz del Perú",
+      "publicar": true,
+      "prioridad": 1,
+      "prioridad_coordenadas": 3
+    },
+    {
+      "id": "ocm",
+      "nombre": "Open Charge Map",
+      "descripcion": "Registro abierto mundial de puntos de carga.",
+      "url": "https://openchargemap.org/",
+      "licencia": "CC BY 4.0 (aportes de la comunidad); CC0 para otros proveedores según cada registro",
+      "atribucion": "© Open Charge Map y colaboradores",
+      "publicar": true,
+      "prioridad": 2,
+      "prioridad_coordenadas": 2
+    },
+    {
+      "id": "osm",
+      "nombre": "OpenStreetMap",
+      "descripcion": "Mapa abierto y colaborativo (amenity=charging_station).",
+      "url": "https://www.openstreetmap.org/copyright",
+      "licencia": "ODbL 1.0",
+      "atribucion": "© colaboradores de OpenStreetMap",
+      "publicar": true,
+      "prioridad": 3,
+      "prioridad_coordenadas": 1
+    }
+  ]
+}

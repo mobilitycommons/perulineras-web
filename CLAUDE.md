@@ -6,6 +6,6 @@
 - No presentar formularios como operativos si no envían datos; el correo comercial se configura en `CORREO` de `assets/sitio.js`.
 - Sitio estático sin build: `index.html` (inicio), `mapa/`, `instala/`, `proveedores/`, `nosotros/`, `privacidad/`, `terminos/`, `404.html`, `assets/` (estilos, JS, logos), `data/electrolineras.geojson`. Rutas absolutas; header y footer se repiten en cada página.
 - Leaflet 1.9.4 está vendorizado en `assets/vendor/leaflet/` (sin CDN).
-- Los datos del mapa salen de OpenStreetMap: actualizar con `python3 scripts/actualizar_electrolineras.py`. No inventar cifras, proveedores, correos ni teléfonos.
+- Los datos del mapa salen de una BD propia que une el padrón de la AAP, Open Charge Map y OpenStreetMap (ver README, «Datos del mapa»): actualizar con `python3 scripts/electrolineras.py`; las decisiones manuales van en `data/curado/ajustes.json`, nunca editando el GeoJSON a mano. No inventar cifras, proveedores, correos ni teléfonos.
 - Los logos de `assets/` se extrajeron del `Tablero de Marca Perulineras.png` (opción 1, bicolor). Reemplazar por los archivos oficiales aislados cuando existan.
 - Probar en local: `python3 -m http.server` y abrir `http://localhost:8000/` (el mapa usa `fetch`, no funciona con `file://`).

@@ -1,0 +1,42 @@
+{
+  "_ayuda": {
+    "excluir": "{id_registro: motivo}. El registro se guarda en la BD pero no se usa.",
+    "unir": "Listas de id de registros que son la misma estación (además de la unión automática a menos de 100 m).",
+    "separar": "Pares de id que NO deben unirse aunque estén cerca.",
+    "correcciones": "{id_registro: {campo: valor}} sobre el registro normalizado, p. ej. coordenadas revisadas.",
+    "verificaciones": "{id_registro: {fecha, fuente, nota}}: verificación de Perulineras de la estación que contiene ese registro.",
+    "altas": "Estaciones propias (fuente perulineras) con el mismo formato de registro; id 'perulineras:<slug>'."
+  },
+  "excluir": {
+    "ocm:314019": "Registro de prueba («Airport Peru», dirección «TEST») de un proveedor de datos de OCM."
+  },
+  "unir": [
+    [
+      "aap:43",
+      "osm:node/13594544866"
+    ],
+    [
+      "aap:20",
+      "osm:node/4039208920"
+    ]
+  ],
+  "separar": [
+    [
+      "aap:33",
+      "ocm:309751"
+    ],
+    [
+      "aap:18",
+      "ocm:469282"
+    ]
+  ],
+  "correcciones": {},
+  "verificaciones": {},
+  "altas": [],
+  "_notas": {
+    "aap:43 + osm:node/13594544866": "Casa Andina Piura: mismo hotel (102 m; OSM sin nombre, operador Hotel Casa Andina).",
+    "aap:20 + osm:node/4039208920": "Lima Expresa: mismo operador a 235 m; la AAP ubica el establecimiento y OSM el punto.",
+    "aap:33 / ocm:309751": "Jockey Plaza: equipos distintos (AAP: CVE EVBOX 22 kW; OCM: red Voltrelli, reportada no operativa). Se mantienen separados para no ocultar el de la AAP.",
+    "aap:18 / ocm:469282": "Chiclayo: hotel Casa Andina y Mall Real Plaza son lugares distintos (OCM ya se une con aap:19)."
+  }
+}

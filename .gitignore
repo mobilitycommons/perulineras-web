@@ -5,3 +5,7 @@ node_modules/
 dist/
 .vercel/
 .DS_Store
+
+# BD de electrolineras: se regenera con scripts/electrolineras.py construir
+data/electrolineras.sqlite
+__pycache__/

@@ -1,0 +1,1531 @@
+{
+ "fuente": "aap",
+ "consultado": "2026-10-19",
+ "total": 48,
+ "registros": [
+  {
+   "id": "aap:1",
+   "id_origen": "1",
+   "nombre": "Hotel Turista",
+   "operador": null,
+   "equipo": "JuiceBox Pro 40 Legacy, Enel X Way",
+   "direccion": "Av Diaz Barcenas 500, Abancay 03001",
+   "localidad": "Abancay",
+   "lat": -13.6353865,
+   "lon": -72.8800397,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 9.6,
+   "conectores": [
+    {
+     "tipo": "type1",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 9.6
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d969.3419101204249!2d-72.8800397!3d-13.6353865!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x916d02df243a590d%3A0xc228840d32b2098e!2sAve%20Diaz%20Barcenas%20500%2C%20Abancay%2003001!5e0!3m2!1ses!2spe!4v1763619548218!5m2!1ses!2spe",
+   "texto_conectores": "C.A.: Tipo 1 (SAE J1772)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:2",
+   "id_origen": "2",
+   "nombre": "Instituto SENATI – Casma",
+   "operador": null,
+   "equipo": "JuiceBox Pro 40 Legacy, Enel X Way",
+   "direccion": "Av. Reyna Mz. T Lote 6 - Casma",
+   "localidad": "Áncash",
+   "lat": -9.4731161,
+   "lon": -78.3089949,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 9.6,
+   "conectores": [
+    {
+     "tipo": "type1",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 9.6
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1967.7044550339167!2d-78.3089949!3d-9.4731161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91abb88e60df2da7%3A0x61e20150506dfeaf!2sSENATI%20Sede%20Casma!5e0!3m2!1ses!2spe!4v1763739604729!5m2!1ses!2spe",
+   "texto_conectores": "C.A.: Tipo 1 (SAE J1772)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:3",
+   "id_origen": "3",
+   "nombre": "Instituto SENATI – Chimbote",
+   "operador": null,
+   "equipo": "JuiceBox Pro 40 Legacy, Enel X Way",
+   "direccion": "Av. Universitaria, Nuevo Chimbote 02712",
+   "localidad": "Áncash",
+   "lat": -9.1170099,
+   "lon": -78.5162107,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 9.6,
+   "conectores": [
+    {
+     "tipo": "type1",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 9.6
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/YxxKzzNUtenTQEz76",
+   "texto_conectores": "C.A.: Tipo 1 (SAE J1772)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:4",
+   "id_origen": "4",
+   "nombre": "Instituto SENATI – Andahuaylas",
+   "operador": null,
+   "equipo": "JuiceBox Pro 40 Legacy, Enel X Way",
+   "direccion": "Avenida Sesquicentenario 180, Talavera 03701",
+   "localidad": "Apurímac",
+   "lat": -13.6585791,
+   "lon": -73.429758,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 9.6,
+   "conectores": [
+    {
+     "tipo": "type1",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 9.6
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/6acywPM8iAaDUaFf6",
+   "texto_conectores": "C.A.: Tipo 1 (SAE J1772)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:5",
+   "id_origen": "5",
+   "nombre": "Centro Comercial Lambramani",
+   "operador": null,
+   "equipo": "CVE EVBOX, Equans",
+   "direccion": "Av. Lambramani 325 - Arequipa",
+   "localidad": "Arequipa",
+   "lat": -16.4105382,
+   "lon": -71.5197847,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 1,
+   "potencia_max_kw": 7.4,
+   "conectores": [
+    {
+     "tipo": "type2",
+     "corriente": "AC",
+     "cantidad": 1,
+     "potencia_kw": 7.4
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/jt6vg8DBCzqvrHzp9",
+   "texto_conectores": "C.A.: Tipo 2 (Mennekes)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:7",
+   "id_origen": "7",
+   "nombre": "Hotel Punta Arena Camana",
+   "operador": null,
+   "equipo": "JuiceBox 2.01, Enel X Way",
+   "direccion": "Ctra. Panamericana S km 840, La Punta 04445",
+   "localidad": "Arequipa",
+   "lat": -16.6506965,
+   "lon": -72.6748093,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 1,
+   "potencia_max_kw": 7.4,
+   "conectores": [
+    {
+     "tipo": "type2",
+     "corriente": "AC",
+     "cantidad": 1,
+     "potencia_kw": 7.4
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/xf1FUL8fi65i5Ekz7",
+   "texto_conectores": "C.A.: Tipo 2",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:6",
+   "id_origen": "6",
+   "nombre": "Hotel Turistas Chala",
+   "operador": null,
+   "equipo": "JuiceBox 2.01, Enel X Way",
+   "direccion": "Cal. Comercio 601, Chala 04501",
+   "localidad": "Arequipa",
+   "lat": -15.8627261,
+   "lon": -74.2474937,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 1,
+   "potencia_max_kw": 7.4,
+   "conectores": [
+    {
+     "tipo": "type2",
+     "corriente": "AC",
+     "cantidad": 1,
+     "potencia_kw": 7.4
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/cy1hyXEFYWKQAi7o8",
+   "texto_conectores": "C.A.: Tipo 2",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:8",
+   "id_origen": "8",
+   "nombre": "DM Hotel – Ayacucho",
+   "operador": null,
+   "equipo": "JuiceBox Pro 40 Legacy, Enel X Way",
+   "direccion": "Jr. Atahualpa 184, Ayacucho 05003",
+   "localidad": "Ayacucho",
+   "lat": -13.1588477,
+   "lon": -74.2259188,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 9.6,
+   "conectores": [
+    {
+     "tipo": "type1",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 9.6
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/TRtTko7AiQtSryou9",
+   "texto_conectores": "C.A.: Tipo 1 (SAE J1772)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:11",
+   "id_origen": "11",
+   "nombre": "Hotel Sol Natura – Ollantaytambo",
+   "operador": null,
+   "equipo": "JuiceBox Pro 40 Legacy, Enel X Way",
+   "direccion": "Av Ferrocarril 633, Ollantaytambo",
+   "localidad": "Cusco",
+   "lat": -13.2599361,
+   "lon": -72.2659406,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 1,
+   "potencia_max_kw": 9.6,
+   "conectores": [
+    {
+     "tipo": "type1",
+     "corriente": "AC",
+     "cantidad": 1,
+     "potencia_kw": 9.6
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/G3LJGASMU8cXRgV46",
+   "texto_conectores": "C.A.: Tipo 1 (SAE J1772)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:9",
+   "id_origen": "9",
+   "nombre": "Hotel Wilkamayu – Sicuani",
+   "operador": null,
+   "equipo": "JuiceBox Pro 40 Legacy, Enel X Way",
+   "direccion": "Av. Confederacion 420, Sicuani 08254",
+   "localidad": "Cusco",
+   "lat": -14.2612185,
+   "lon": -71.2270257,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 9.6,
+   "conectores": [
+    {
+     "tipo": "type1",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 9.6
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/43eWr8D7WY9Z5tf8A",
+   "texto_conectores": "C.A.: Tipo 1 (SAE J1772)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:10",
+   "id_origen": "10",
+   "nombre": "Real Plaza Cusco – Cusco",
+   "operador": null,
+   "equipo": "JuiceBox Pro 40 Legacy, Enel X Way",
+   "direccion": "Alfredo Yepes Miranda 6, Cusco 08003",
+   "localidad": "Cusco",
+   "lat": -13.5247904,
+   "lon": -71.9464971,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 9.6,
+   "conectores": [
+    {
+     "tipo": "type1",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 9.6
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/n5u3WLojKFKwraBP7",
+   "texto_conectores": "C.A.: Tipo 1 (SAE J1772)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:12",
+   "id_origen": "12",
+   "nombre": "EE.SS. El Ovalo de Ica",
+   "operador": null,
+   "equipo": "C6EU/060-JC, XCharge",
+   "direccion": "Ctra. Panamericana S 311, Ica 11004",
+   "localidad": "Ica",
+   "lat": -14.0623917,
+   "lon": -75.7413889,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 1,
+   "potencia_max_kw": 60.0,
+   "conectores": [
+    {
+     "tipo": "type2_combo",
+     "corriente": "DC",
+     "cantidad": null,
+     "potencia_kw": null
+    },
+    {
+     "tipo": "chademo",
+     "corriente": "DC",
+     "cantidad": null,
+     "potencia_kw": null
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/eQChGMxrt1HnaNACA",
+   "texto_conectores": "CCS2-CHAdeMO",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:13",
+   "id_origen": "13",
+   "nombre": "Hotel Casa Hacienda Nasca Oasis",
+   "operador": null,
+   "equipo": "JuiceBox 2.01, Enel X Way",
+   "direccion": "Panamericana Sur Km 449, El Carmen de Pangaravi",
+   "localidad": "Ica",
+   "lat": -14.8378476,
+   "lon": -74.9455827,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 1,
+   "potencia_max_kw": 7.4,
+   "conectores": [
+    {
+     "tipo": "type2",
+     "corriente": "AC",
+     "cantidad": 1,
+     "potencia_kw": 7.4
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/bGiwhPKUTkhMVvWUA",
+   "texto_conectores": "Socket Tipo 2",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:14",
+   "id_origen": "14",
+   "nombre": "Hotel Viñas Queirolo - ICA",
+   "operador": null,
+   "equipo": "Evinka Alien X",
+   "direccion": "Km 11 de la carretera a San José de los Molinos, Ica",
+   "localidad": "Ica",
+   "lat": -13.9778099,
+   "lon": -75.6905913,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 1,
+   "potencia_max_kw": 7.0,
+   "conectores": [
+    {
+     "tipo": "type2",
+     "corriente": "AC",
+     "cantidad": 1,
+     "potencia_kw": 7.0
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/5qYuNcrewhoUdUf76",
+   "texto_conectores": "C.A.: Tipo 2 (Mennekes)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:15",
+   "id_origen": "15",
+   "nombre": "Real Plaza – Huancayo",
+   "operador": null,
+   "equipo": "JuiceBox Pro 40 Legacy, Enel X Way",
+   "direccion": "Av Ferrocarril S/N, Huancayo 12001",
+   "localidad": "Junin",
+   "lat": -12.0661894,
+   "lon": -75.2052851,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 9.6,
+   "conectores": [
+    {
+     "tipo": "type1",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 9.6
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/9Xt3D39q9nqXDE1R6",
+   "texto_conectores": "C.A.: Tipo 1 (SAE J1772)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:17",
+   "id_origen": "17",
+   "nombre": "Hotel El Faro – Pacasmayo",
+   "operador": null,
+   "equipo": "JuiceBox Pro 40 Legacy, Enel X Way",
+   "direccion": "Urbanizacion la Perla, Manzana m, Lote S/N, Pacasmayo",
+   "localidad": "La Libertad",
+   "lat": -7.4075003,
+   "lon": -79.5777362,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 1,
+   "potencia_max_kw": 9.6,
+   "conectores": [
+    {
+     "tipo": "type1",
+     "corriente": "AC",
+     "cantidad": 1,
+     "potencia_kw": 9.6
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/MUEci9nk6rfLReJZA",
+   "texto_conectores": "C.A.: Tipo 1 (SAE J1772)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:16",
+   "id_origen": "16",
+   "nombre": "Hotel Hilton Garden Inn Trujillo",
+   "operador": null,
+   "equipo": "JuiceBox Pro 40 Legacy, Enel X Way",
+   "direccion": "Av. El Golf 591, III 13009",
+   "localidad": "La Libertad",
+   "lat": -8.137137,
+   "lon": -79.034286,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 1,
+   "potencia_max_kw": 9.6,
+   "conectores": [
+    {
+     "tipo": "type1",
+     "corriente": "AC",
+     "cantidad": 1,
+     "potencia_kw": 9.6
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/577fYf8sa67cyKj16",
+   "texto_conectores": "C.A.: Tipo 1 (SAE J1772)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:18",
+   "id_origen": "18",
+   "nombre": "Hotel Casa Andina Chiclayo",
+   "operador": null,
+   "equipo": "JuiceBox 2.01, Enel X Way",
+   "direccion": "Federico Villarreal 115, Chiclayo 14009",
+   "localidad": "Lambayeque",
+   "lat": -6.7718685,
+   "lon": -79.8463163,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 1,
+   "potencia_max_kw": 7.4,
+   "conectores": [
+    {
+     "tipo": "type2",
+     "corriente": "AC",
+     "cantidad": 1,
+     "potencia_kw": 7.4
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/hZSFsDcn5vq4eUms5",
+   "texto_conectores": "C.A.: Tipo 2",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:19",
+   "id_origen": "19",
+   "nombre": "Real Plaza Chiclayo – Chiclayo",
+   "operador": null,
+   "equipo": "JuiceBox Pro 40 Legacy, Enel X Way",
+   "direccion": "Andrés Avelino Cáceres 222, Chiclayo 14008",
+   "localidad": "Lambayeque",
+   "lat": -6.7778392,
+   "lon": -79.8327586,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 9.6,
+   "conectores": [
+    {
+     "tipo": "type1",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 9.6
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/2r3DaWSQpdER9wCB7",
+   "texto_conectores": "C.A.: Tipo 1 (SAE J1772)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:33",
+   "id_origen": "33",
+   "nombre": "Centro Comercial Jockey Plaza",
+   "operador": null,
+   "equipo": "CVE EVBOX, Equans",
+   "direccion": "Av. Jarvier Prado Este 4200 - Surco",
+   "localidad": "Lima",
+   "lat": -12.0863898,
+   "lon": -76.9786851,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 22.0,
+   "conectores": [
+    {
+     "tipo": "type2",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 22.0
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/xgTNVyewun7t1RPq5",
+   "texto_conectores": "C.A.: Tipo 2 (Mennekes)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:32",
+   "id_origen": "32",
+   "nombre": "Centro Comercial La Rambla",
+   "operador": null,
+   "equipo": "CVE EVBOX, Equans",
+   "direccion": "Av. Jarvier Prado Este 2050 - San Borja",
+   "localidad": "Lima",
+   "lat": -12.0886522,
+   "lon": -77.0047186,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 7.4,
+   "conectores": [
+    {
+     "tipo": "type2",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 7.4
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/BAEQgmbu6yZsRLgS7",
+   "texto_conectores": "C.A.: Tipo 2 (Mennekes)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:31",
+   "id_origen": "31",
+   "nombre": "Centro Comercial Larcomar",
+   "operador": null,
+   "equipo": "CVE EVBOX, Equans",
+   "direccion": "Av. Malecón de la Reserva 610 - Miraflores",
+   "localidad": "Lima",
+   "lat": -12.1319564,
+   "lon": -77.0305119,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 1,
+   "potencia_max_kw": 22.0,
+   "conectores": [
+    {
+     "tipo": "type2",
+     "corriente": "AC",
+     "cantidad": 1,
+     "potencia_kw": 22.0
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/eFVg5K76NpsPy9KT6",
+   "texto_conectores": "C.A.: Tipo 2 (Mennekes)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:26",
+   "id_origen": "26",
+   "nombre": "Centro Comercial Megaplaza - Volvo",
+   "operador": null,
+   "equipo": "JuiceBox 2.01, Enel X Way",
+   "direccion": "CC Megaplaza",
+   "localidad": "Lima",
+   "lat": -11.9943995,
+   "lon": -77.0622428,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 2,
+   "conectores_total": 1,
+   "potencia_max_kw": 7.4,
+   "conectores": [
+    {
+     "tipo": "type2",
+     "corriente": "AC",
+     "cantidad": 1,
+     "potencia_kw": 7.4
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/MQtGRK45NmwYntiH8",
+   "texto_conectores": "C.A.: Tipo 2",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:34",
+   "id_origen": "34",
+   "nombre": "Centro Comercial Real Plaza Puruchuco",
+   "operador": null,
+   "equipo": "CVE EVBOX, Equans",
+   "direccion": "Av. Prol. Javier Prado Este 8680, Ate 15494",
+   "localidad": "Lima",
+   "lat": -12.0432846,
+   "lon": -76.931525,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 7.4,
+   "conectores": [
+    {
+     "tipo": "type2",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 7.4
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/HmBG623TiAaCd8e67",
+   "texto_conectores": "C.A.: Tipo 2 (Mennekes)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:36",
+   "id_origen": "36",
+   "nombre": "Centro Comercial Real Plaza Salaverry",
+   "operador": null,
+   "equipo": "CVE EVBOX, Equans",
+   "direccion": "Av. Gral. Salaverry 2370 - Jesús María",
+   "localidad": "Lima",
+   "lat": -12.0898612,
+   "lon": -77.0526686,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 7.4,
+   "conectores": [
+    {
+     "tipo": "type2",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 7.4
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/pQHCphNQRftiaJhC6",
+   "texto_conectores": "C.A.: Tipo 2 (Mennekes)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:27",
+   "id_origen": "27",
+   "nombre": "EESS GESA - Primax Chorrilos",
+   "operador": null,
+   "equipo": "C6EU/060-CC, XCharge",
+   "direccion": "Km. 18.5, 1S, Chorrillos",
+   "localidad": "Lima",
+   "lat": -12.2154126,
+   "lon": -76.9770875,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 1,
+   "potencia_max_kw": 60.0,
+   "conectores": [
+    {
+     "tipo": "type2_combo",
+     "corriente": "DC",
+     "cantidad": 1,
+     "potencia_kw": 60.0
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/MVpcMNto8hFvxEdt9",
+   "texto_conectores": "CCS2x2",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:30",
+   "id_origen": "30",
+   "nombre": "Electrolinera Plaza San Miguel",
+   "operador": null,
+   "equipo": "EVInka RX7",
+   "direccion": "Plaza San Miguel, Av. la Marina 2000, San Miguel",
+   "localidad": "Lima",
+   "lat": -12.0776185,
+   "lon": -77.0837672,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 4,
+   "conectores_total": 4,
+   "potencia_max_kw": 7.0,
+   "conectores": [
+    {
+     "tipo": "type2",
+     "corriente": "AC",
+     "cantidad": 4,
+     "potencia_kw": 7.0
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/J9gp4QX8XtFQgkmX9",
+   "texto_conectores": "C.A.: Tipo 2 (Mennekes)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:39",
+   "id_origen": "39",
+   "nombre": "Estación de Servicio Castaños - Primax",
+   "operador": null,
+   "equipo": "Efacec – USA. Modelo: Efapower EV QC 45",
+   "direccion": "Av. Javier Prado Oeste 1895 – San Isidro, Lima",
+   "localidad": "Lima",
+   "lat": -12.0948077,
+   "lon": -77.0504507,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 49.0,
+   "conectores": [
+    {
+     "tipo": "type1_combo",
+     "corriente": "DC",
+     "cantidad": null,
+     "potencia_kw": null
+    },
+    {
+     "tipo": "chademo",
+     "corriente": "DC",
+     "cantidad": null,
+     "potencia_kw": null
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/CF1DDJvGZdkcYSmq9",
+   "texto_conectores": "C.C.: CHAdeMO y CCS Combo T1",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:23",
+   "id_origen": "23",
+   "nombre": "Estación EVInka Miraflores - Luz del Sur",
+   "operador": null,
+   "equipo": "EVInka SX60, EVInka RX22",
+   "direccion": "Av. La Paz 1690, Miraflores",
+   "localidad": "Lima",
+   "lat": -12.1348813,
+   "lon": -77.0250724,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 2,
+   "conectores_total": 3,
+   "potencia_max_kw": 60.0,
+   "conectores": [
+    {
+     "tipo": "type2_combo",
+     "corriente": "DC",
+     "cantidad": null,
+     "potencia_kw": null
+    },
+    {
+     "tipo": "gb_t_dc",
+     "corriente": "DC",
+     "cantidad": null,
+     "potencia_kw": null
+    },
+    {
+     "tipo": "type2",
+     "corriente": "AC",
+     "cantidad": null,
+     "potencia_kw": null
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/QiKuyANftSG18a7d8",
+   "texto_conectores": "C.A.: Tipo 2 (Mennekes) C.C.: GBT y CCS2",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:38",
+   "id_origen": "38",
+   "nombre": "Grifo KIO Lurín",
+   "operador": null,
+   "equipo": "C6EU/060-JC, Xcharge",
+   "direccion": "Carr. Panamericana Sur 245, Lurín",
+   "localidad": "Lima",
+   "lat": -12.2533991,
+   "lon": -76.9281363,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 60.0,
+   "conectores": [
+    {
+     "tipo": "type2_combo",
+     "corriente": "DC",
+     "cantidad": null,
+     "potencia_kw": null
+    },
+    {
+     "tipo": "chademo",
+     "corriente": "DC",
+     "cantidad": null,
+     "potencia_kw": null
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/16ztX3fMCmx246oE9",
+   "texto_conectores": "C.C.: CHAdeMO y CCS2",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:25",
+   "id_origen": "25",
+   "nombre": "Grifo San Pedro de Mala",
+   "operador": null,
+   "equipo": "C6EU/060-JC, XCharge",
+   "direccion": "km 86.5, Ctra. Panamericana Sur",
+   "localidad": "Lima",
+   "lat": 29.3172625,
+   "lon": -98.6499219,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 1,
+   "potencia_max_kw": 60.0,
+   "conectores": [
+    {
+     "tipo": "type2_combo",
+     "corriente": "DC",
+     "cantidad": null,
+     "potencia_kw": null
+    },
+    {
+     "tipo": "chademo",
+     "corriente": "DC",
+     "cantidad": null,
+     "potencia_kw": null
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/LWqcuzgvSJwTk7pY7",
+   "texto_conectores": "CCS2-CHAdeMO",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:35",
+   "id_origen": "35",
+   "nombre": "Hotel Casa Andina Select",
+   "operador": null,
+   "equipo": "JuiceBox Pro 40 Legacy, Enel X Way",
+   "direccion": "Calle Schell 452, Miraflores 15074",
+   "localidad": "Lima",
+   "lat": -12.123349,
+   "lon": -77.027296,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 9.6,
+   "conectores": [
+    {
+     "tipo": "type1",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 9.6
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/iRpo7oLF8w8hiW618",
+   "texto_conectores": "C.A.: Tipo 1 (SAE J1772)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:37",
+   "id_origen": "37",
+   "nombre": "Hotel Chavín – Barranca",
+   "operador": null,
+   "equipo": "JuiceBox Pro 40 Legacy, Enel X Way",
+   "direccion": "Antigua Panamericana Nte. 222, Barranca 15169",
+   "localidad": "Lima",
+   "lat": -10.7522222,
+   "lon": -77.7602397,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 9.6,
+   "conectores": [
+    {
+     "tipo": "type1",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 9.6
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/RgD4EapjoX1bN4a67",
+   "texto_conectores": "C.A.: Tipo 1 (SAE J1772)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:28",
+   "id_origen": "28",
+   "nombre": "Hotel Innside Miraflores",
+   "operador": null,
+   "equipo": "EVInka RX7",
+   "direccion": "Av. Ernesto Diez Canseco 344, Miraflores 15074",
+   "localidad": "Lima",
+   "lat": -12.1224744,
+   "lon": -77.0271816,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 1,
+   "potencia_max_kw": 7.0,
+   "conectores": [
+    {
+     "tipo": "type2",
+     "corriente": "AC",
+     "cantidad": 1,
+     "potencia_kw": 7.0
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/nH4X6b4QJRfihh9J9",
+   "texto_conectores": "C.A.: Tipo 2 (Mennekes)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:24",
+   "id_origen": "24",
+   "nombre": "Hotel Sheraton Centro Histórico",
+   "operador": null,
+   "equipo": "EVInka RX7",
+   "direccion": "Av. Paseo de la República 170, Lima 15001",
+   "localidad": "Lima",
+   "lat": -12.0572872,
+   "lon": -77.0370224,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 1,
+   "potencia_max_kw": 7.0,
+   "conectores": [
+    {
+     "tipo": "type2",
+     "corriente": "AC",
+     "cantidad": 1,
+     "potencia_kw": 7.0
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/2KUsSvejkihwikCU7",
+   "texto_conectores": "C.A.: Tipo 2 (Mennekes)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:29",
+   "id_origen": "29",
+   "nombre": "La Cabrera - Miraflores",
+   "operador": null,
+   "equipo": "Evinka Alien X",
+   "direccion": "Calle Enrique Palacios 140, Miraflores 15074 Miraflores LIMA, 18",
+   "localidad": "Lima",
+   "lat": -12.1168142,
+   "lon": -77.0298981,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 1,
+   "potencia_max_kw": 7.0,
+   "conectores": [
+    {
+     "tipo": "type2",
+     "corriente": "AC",
+     "cantidad": 1,
+     "potencia_kw": 7.0
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/PqvR9SfCnZTdhUBf6",
+   "texto_conectores": "C.A.: Tipo 2 (Mennekes)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:22",
+   "id_origen": "22",
+   "nombre": "La Cabrera El Polo",
+   "operador": null,
+   "equipo": "EVInka RX7",
+   "direccion": "Jiron El Polo 284 Urbanización Monterrico Surco",
+   "localidad": "Lima",
+   "lat": -12.1072793,
+   "lon": -76.9738843,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 1,
+   "potencia_max_kw": 7.0,
+   "conectores": [
+    {
+     "tipo": "type2",
+     "corriente": "AC",
+     "cantidad": 1,
+     "potencia_kw": 7.0
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/ynLRwshvZ8HviR2w5",
+   "texto_conectores": "C.A.: Tipo 2 (Mennekes)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:20",
+   "id_origen": "20",
+   "nombre": "Lima Expresa - Base Huánuco",
+   "operador": null,
+   "equipo": "C6EU/060-CC, XCharge",
+   "direccion": "Peaje Huánuco de la Linea Amarilla, sentido hacia el Aeropuerto",
+   "localidad": "Lima",
+   "lat": -12.0422714,
+   "lon": -77.020402,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 60.0,
+   "conectores": [
+    {
+     "tipo": "type2_combo",
+     "corriente": "DC",
+     "cantidad": 2,
+     "potencia_kw": 60.0
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/p2A2URRCtAVSqEk78",
+   "texto_conectores": "CCS2x2",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:21",
+   "id_origen": "21",
+   "nombre": "Open Plaza Angamos",
+   "operador": null,
+   "equipo": "CVE EVBOX",
+   "direccion": "Av Tomás Marsano 1805, Surquillo - Lima",
+   "localidad": "Lima",
+   "lat": -12.1195185,
+   "lon": -77.0070331,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 22.0,
+   "conectores": [
+    {
+     "tipo": "type2",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 22.0
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/uB5rQNkSYg46qc3PA",
+   "texto_conectores": "C.A.: Tipo 2 (Mennekes)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:40",
+   "id_origen": "40",
+   "nombre": "Hotel Venecia Ilo",
+   "operador": null,
+   "equipo": "JuiceBox 2.01, Enel X Way",
+   "direccion": "Callao 527, Ilo 18601",
+   "localidad": "Moquegua",
+   "lat": -17.645591,
+   "lon": -71.3439085,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 1,
+   "potencia_max_kw": 7.4,
+   "conectores": [
+    {
+     "tipo": "type2",
+     "corriente": "AC",
+     "cantidad": 1,
+     "potencia_kw": 7.4
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/Ti8RSrRtzEd37P5g7",
+   "texto_conectores": "C.A.: Tipo 2",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:41",
+   "id_origen": "41",
+   "nombre": "SENATI CFP",
+   "operador": null,
+   "equipo": "JuiceBox Pro 40 Legacy, Enel X Way",
+   "direccion": "Av. Daniel Alcides Carrión 308, Cerro De Pasco 19001",
+   "localidad": "Pasco",
+   "lat": -10.666364,
+   "lon": -76.2562795,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 9.6,
+   "conectores": [
+    {
+     "tipo": "type1",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 9.6
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/Fs7wm4dd5Cju2bFU7",
+   "texto_conectores": "C.A.: Tipo 1 (SAE J1772)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:42",
+   "id_origen": "42",
+   "nombre": "Instituto SENATI Pisco",
+   "operador": null,
+   "equipo": "JuiceBox Pro 40 Legacy, Enel X Way",
+   "direccion": "Laureles, Pisco 11601",
+   "localidad": "Pisco",
+   "lat": -13.7187221,
+   "lon": -76.2099762,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 9.6,
+   "conectores": [
+    {
+     "tipo": "type1",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 9.6
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/9vs8SuqWGBqASH4Y7",
+   "texto_conectores": "C.A.: Tipo 1 (SAE J1772)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:43",
+   "id_origen": "43",
+   "nombre": "Hotel Casa Andina",
+   "operador": null,
+   "equipo": "JuiceBox Pro 40 Legacy, Enel X Way",
+   "direccion": "Av. Ramón Mujica s/n Urb. San Eduardo, El Chipe, Piura, Piura",
+   "localidad": "Piura",
+   "lat": -5.1813329,
+   "lon": -80.6309816,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 9.6,
+   "conectores": [
+    {
+     "tipo": "type1",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 9.6
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/JYrQSqw3GY9rwQLQA",
+   "texto_conectores": "C.A.: Tipo 1 (SAE J1772)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:44",
+   "id_origen": "44",
+   "nombre": "Casa Andina Premium",
+   "operador": null,
+   "equipo": "JuiceBox Pro 40 Legacy, Enel X Way",
+   "direccion": "Av. Sesqui Centenario 1970, Sesquicentenario 1970, Puno",
+   "localidad": "Puno",
+   "lat": -15.8236265,
+   "lon": -69.9970461,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 9.6,
+   "conectores": [
+    {
+     "tipo": "type1",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 9.6
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/UbpAcAtwztn4TpEE6",
+   "texto_conectores": "C.A.: Tipo 1 (SAE J1772)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:45",
+   "id_origen": "45",
+   "nombre": "Terminal Terrestre Ayaviri – Ayaviri",
+   "operador": null,
+   "equipo": "JuiceBox Pro 40 Legacy, Enel X Way",
+   "direccion": "Ayaviri 21866",
+   "localidad": "Puno",
+   "lat": -14.8848875,
+   "lon": -70.5962031,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 9.6,
+   "conectores": [
+    {
+     "tipo": "type1",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 9.6
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/QJ5QELWn6YJVdXgG6",
+   "texto_conectores": "C.A.: Tipo 1 (SAE J1772)",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:46",
+   "id_origen": "46",
+   "nombre": "Hotel Casa Andina Tacna",
+   "operador": null,
+   "equipo": "JuiceBox 2.01, Enel X Way",
+   "direccion": "Av. Billinghurst 170, Tacna 23003",
+   "localidad": "Tacna",
+   "lat": -18.0160637,
+   "lon": -70.2482842,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 1,
+   "potencia_max_kw": 7.4,
+   "conectores": [
+    {
+     "tipo": "type2",
+     "corriente": "AC",
+     "cantidad": 1,
+     "potencia_kw": 7.4
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/TnGsLSoeJJ9ypBmw6",
+   "texto_conectores": "C.A.: Tipo 2",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:47",
+   "id_origen": "47",
+   "nombre": "Casa Andina Zorritos",
+   "operador": null,
+   "equipo": "JuiceBox 2.01, Enel X Way",
+   "direccion": "Carretera Panamericana Norte Km. 1232, Bocapán, Zorritos",
+   "localidad": "Tumbes",
+   "lat": -7.8404507,
+   "lon": -79.1510661,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 1,
+   "conectores_total": 1,
+   "potencia_max_kw": 7.4,
+   "conectores": [
+    {
+     "tipo": "type2",
+     "corriente": "AC",
+     "cantidad": 1,
+     "potencia_kw": 7.4
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/Hv9io6e56PBgQyen8",
+   "texto_conectores": "C.A.: Tipo 2",
+   "actualizado_origen": null
+  },
+  {
+   "id": "aap:48",
+   "id_origen": "48",
+   "nombre": "Hotel Punta Sal – Puntal Sal",
+   "operador": null,
+   "equipo": "JuiceBox 2.0, Enel X",
+   "direccion": "Carretera Sullana Tumbes Km. 173 - Contralmirante Villar, Canoas de Punta Sal, Tumbes",
+   "localidad": "Tumbes",
+   "lat": -3.9566944,
+   "lon": -80.9560204,
+   "precision": "lugar",
+   "acceso": null,
+   "costo": null,
+   "horario": null,
+   "estado": null,
+   "cargadores": 2,
+   "conectores_total": 2,
+   "potencia_max_kw": 7.4,
+   "conectores": [
+    {
+     "tipo": "type2",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 7.4
+    }
+   ],
+   "url": "https://aap.org.pe/electrolineras",
+   "url_mapa": "https://maps.app.goo.gl/D5Jr12a9d7UE6FFJ9",
+   "texto_conectores": "C.A.: Tipo 2",
+   "actualizado_origen": null
+  }
+ ]
+}

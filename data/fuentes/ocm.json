@@ -1,0 +1,292 @@
+{
+ "fuente": "ocm",
+ "consultado": "2026-10-19",
+ "total": 9,
+ "registros": [
+  {
+   "id": "ocm:297116",
+   "id_origen": "297116",
+   "nombre": "Enel X - Hotel Casa Andina",
+   "operador": "Enel X",
+   "equipo": null,
+   "direccion": "Sesquicentenario 1970",
+   "localidad": "Puno",
+   "lat": -15.82340248210545,
+   "lon": -69.99718651685288,
+   "precision": "exacta",
+   "acceso": "clientes",
+   "costo": null,
+   "horario": null,
+   "estado": "operativo",
+   "cargadores": 2,
+   "conectores_total": 2,
+   "potencia_max_kw": 10,
+   "conectores": [
+    {
+     "tipo": "type1",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 10
+    }
+   ],
+   "url": "https://openchargemap.org/site/poi/details/297116",
+   "proveedor_datos": "Open Charge Map Contributors",
+   "licencia": "Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0)",
+   "actualizado_origen": "2024-03-30"
+  },
+  {
+   "id": "ocm:297117",
+   "id_origen": "297117",
+   "nombre": "Enel X - Terminal terrestre Ayaviri",
+   "operador": "Enel X",
+   "equipo": null,
+   "direccion": "Terminal terrestre Ayaviri",
+   "localidad": "Ayaviri",
+   "lat": -14.884965460221991,
+   "lon": -70.59614036071557,
+   "precision": "exacta",
+   "acceso": "publico",
+   "costo": null,
+   "horario": null,
+   "estado": "operativo",
+   "cargadores": 2,
+   "conectores_total": 2,
+   "potencia_max_kw": 10,
+   "conectores": [
+    {
+     "tipo": "type1",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 10
+    }
+   ],
+   "url": "https://openchargemap.org/site/poi/details/297117",
+   "proveedor_datos": "Open Charge Map Contributors",
+   "licencia": "Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0)",
+   "actualizado_origen": "2024-03-30"
+  },
+  {
+   "id": "ocm:297144",
+   "id_origen": "297144",
+   "nombre": "Enel X - Hotel Wilkamayu",
+   "operador": "Copec Voltex",
+   "equipo": null,
+   "direccion": "Av. Confederacion 420",
+   "localidad": "Sicuani",
+   "lat": -14.26133380199552,
+   "lon": -71.22706331233057,
+   "precision": "exacta",
+   "acceso": "publico",
+   "costo": null,
+   "horario": null,
+   "estado": "operativo",
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 10,
+   "conectores": [
+    {
+     "tipo": "type1",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 10
+    }
+   ],
+   "url": "https://openchargemap.org/site/poi/details/297144",
+   "proveedor_datos": "Open Charge Map Contributors",
+   "licencia": "Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0)",
+   "actualizado_origen": "2024-04-02"
+  },
+  {
+   "id": "ocm:297145",
+   "id_origen": "297145",
+   "nombre": "Panamericana Sur Km 449",
+   "operador": "Copec Voltex",
+   "equipo": null,
+   "direccion": "El Carmen de Pangaravi",
+   "localidad": "Nasca",
+   "lat": -14.837592138396483,
+   "lon": -74.94561169762716,
+   "precision": "exacta",
+   "acceso": "clientes",
+   "costo": null,
+   "horario": null,
+   "estado": "operativo",
+   "cargadores": 1,
+   "conectores_total": 1,
+   "potencia_max_kw": 7,
+   "conectores": [
+    {
+     "tipo": "type1",
+     "corriente": "AC",
+     "cantidad": 1,
+     "potencia_kw": 7
+    }
+   ],
+   "url": "https://openchargemap.org/site/poi/details/297145",
+   "proveedor_datos": "Open Charge Map Contributors",
+   "licencia": "Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0)",
+   "actualizado_origen": "2024-04-02"
+  },
+  {
+   "id": "ocm:309750",
+   "id_origen": "309750",
+   "nombre": "Los Andes Corporate Services",
+   "operador": "Voltrelli (RO)",
+   "equipo": null,
+   "direccion": "Pje. Calango, San Juan de Miraflores ",
+   "localidad": "Lima",
+   "lat": -12.17502348,
+   "lon": -76.97148346,
+   "precision": "exacta",
+   "acceso": "publico",
+   "costo": null,
+   "horario": null,
+   "estado": "no_operativo",
+   "cargadores": null,
+   "conectores_total": 8,
+   "potencia_max_kw": null,
+   "conectores": [
+    {
+     "tipo": "type2_combo",
+     "corriente": "DC",
+     "cantidad": 4,
+     "potencia_kw": null
+    },
+    {
+     "tipo": "type2",
+     "corriente": "AC",
+     "cantidad": 4,
+     "potencia_kw": null
+    }
+   ],
+   "url": "https://openchargemap.org/site/poi/details/309750",
+   "proveedor_datos": "Voltrelli",
+   "licencia": "Licensed under CC0  by data sharing agreement",
+   "actualizado_origen": "2025-07-03"
+  },
+  {
+   "id": "ocm:309751",
+   "id_origen": "309751",
+   "nombre": "Jockey Plaza",
+   "operador": "Voltrelli (RO)",
+   "equipo": null,
+   "direccion": "Av. Javier Prado Este 4200, Santiago de Surco de Lima",
+   "localidad": "Lima",
+   "lat": -12.085396,
+   "lon": -76.977608,
+   "precision": "exacta",
+   "acceso": "publico",
+   "costo": null,
+   "horario": null,
+   "estado": "no_operativo",
+   "cargadores": null,
+   "conectores_total": 4,
+   "potencia_max_kw": null,
+   "conectores": [
+    {
+     "tipo": "type2",
+     "corriente": "AC",
+     "cantidad": 4,
+     "potencia_kw": null
+    }
+   ],
+   "url": "https://openchargemap.org/site/poi/details/309751",
+   "proveedor_datos": "Voltrelli",
+   "licencia": "Licensed under CC0  by data sharing agreement",
+   "actualizado_origen": "2025-07-03"
+  },
+  {
+   "id": "ocm:314019",
+   "id_origen": "314019",
+   "nombre": "Airport Peru",
+   "operador": "Voltrelli (RO)",
+   "equipo": null,
+   "direccion": "TEST",
+   "localidad": "Lima",
+   "lat": -12.02820414,
+   "lon": -77.10547138,
+   "precision": "exacta",
+   "acceso": "publico",
+   "costo": null,
+   "horario": null,
+   "estado": "operativo",
+   "cargadores": null,
+   "conectores_total": 2,
+   "potencia_max_kw": null,
+   "conectores": [
+    {
+     "tipo": "type2_combo",
+     "corriente": "DC",
+     "cantidad": 2,
+     "potencia_kw": null
+    }
+   ],
+   "url": "https://openchargemap.org/site/poi/details/314019",
+   "proveedor_datos": "Voltrelli",
+   "licencia": "Licensed under CC0  by data sharing agreement",
+   "actualizado_origen": "2025-07-03"
+  },
+  {
+   "id": "ocm:469282",
+   "id_origen": "469282",
+   "nombre": "Mall Real Plaza",
+   "operador": "Enel X",
+   "equipo": null,
+   "direccion": "Andrés Avelino Cáceres 252, Chiclayo 14008, Perú",
+   "localidad": "Chiclayo",
+   "lat": -6.777972562885168,
+   "lon": -79.83260207629951,
+   "precision": "exacta",
+   "acceso": "publico",
+   "costo": null,
+   "horario": null,
+   "estado": "operativo",
+   "cargadores": 1,
+   "conectores_total": 2,
+   "potencia_max_kw": 7.4,
+   "conectores": [
+    {
+     "tipo": "type1",
+     "corriente": "AC",
+     "cantidad": 2,
+     "potencia_kw": 7.4
+    }
+   ],
+   "url": "https://openchargemap.org/site/poi/details/469282",
+   "proveedor_datos": "Open Charge Map Contributors",
+   "licencia": "Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0)",
+   "actualizado_origen": "2025-11-15"
+  },
+  {
+   "id": "ocm:469285",
+   "id_origen": "469285",
+   "nombre": "Avenida El Golf",
+   "operador": "Enel X",
+   "equipo": null,
+   "direccion": "Avenida El Golf",
+   "localidad": "Víctor Larco Herrera",
+   "lat": -8.137009133636198,
+   "lon": -79.03421135964044,
+   "precision": "exacta",
+   "acceso": "clientes",
+   "costo": null,
+   "horario": null,
+   "estado": "operativo",
+   "cargadores": 1,
+   "conectores_total": 1,
+   "potencia_max_kw": 7.4,
+   "conectores": [
+    {
+     "tipo": "type1",
+     "corriente": "AC",
+     "cantidad": 1,
+     "potencia_kw": 7.4
+    }
+   ],
+   "url": "https://openchargemap.org/site/poi/details/469285",
+   "proveedor_datos": "Open Charge Map Contributors",
+   "licencia": "Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0)",
+   "actualizado_origen": "2025-11-15"
+  }
+ ]
+}

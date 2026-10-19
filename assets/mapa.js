@@ -1,4 +1,5 @@
-// Mapa de electrolineras públicas (datos de OpenStreetMap, ver data/electrolineras.geojson).
+// Mapa de electrolineras públicas. Datos: data/electrolineras.geojson, generado por
+// scripts/electrolineras.py a partir de varias fuentes (AAP, Open Charge Map, OpenStreetMap).
 // Una estación se considera verificada solo si trae la propiedad
 // `verificacion: {fecha, fuente}`, añadida tras revisión de Perulineras.
 (function () {
@@ -25,6 +26,7 @@
 
   var icono = L.divIcon({ className: '', html: '<span class="punto"></span>', iconSize: [18, 18], iconAnchor: [9, 9], popupAnchor: [0, -10] });
   var fechaDatos = '';
+  var infoFuente = {};
 
   function esc(t) {
     return String(t).replace(/[&<>"']/g, function (c) {
@@ -36,19 +38,33 @@
     return new Date(iso + 'T12:00:00').toLocaleDateString('es-PE', { day: 'numeric', month: 'long', year: 'numeric' });
   }
 
-  function titulo(p) { return p.name || p.brand || 'Punto de carga'; }
-  function operador(p) { return p.operator || p.network || p.brand || ''; }
+  function titulo(p) { return p.nombre || 'Punto de carga'; }
+  function operador(p) { return p.operador || ''; }
   function direccion(p) {
-    return [[p['addr:street'], p['addr:housenumber']].filter(Boolean).join(' '), p['addr:city']].filter(Boolean).join(', ');
+    var incluida = p.direccion && p.localidad && p.direccion.toLowerCase().indexOf(p.localidad.toLowerCase()) !== -1;
+    return [p.direccion, incluida ? '' : p.localidad].filter(Boolean).join(', ');
   }
+  function kw(n) { return String(n).replace('.', ',') + ' kW'; }
   function conectores(p) {
     return (p.conectores || []).map(function (c) {
       var nombre = CONECTORES[c.tipo] || c.tipo;
-      return esc((c.cantidad && c.cantidad !== 'yes' ? c.cantidad + '× ' : '') + nombre + (c.potencia ? ' · ' + c.potencia : ''));
+      return esc((c.cantidad ? c.cantidad + '× ' : '') + nombre + (c.potencia_kw ? ' · ' + kw(c.potencia_kw) : ''));
     }).join('<br>');
   }
+  function potencia(p) {
+    if (!p.potencia_max_kw) return '';
+    return 'Hasta ' + kw(p.potencia_max_kw) + (p.corriente ? ' (' + p.corriente.replace('/', ' y ') + ')' : '');
+  }
   function acceso(p) {
-    return { yes: 'Público', 'public': 'Público' }[p.access] || '';
+    return { publico: 'Público', clientes: 'Solo clientes del establecimiento' }[p.acceso] || '';
+  }
+  function fuentes(p) {
+    return (p.fuentes || []).map(function (f) {
+      var info = infoFuente[f.id] || {};
+      var cuando = f.actualizado ? 'dato del ' + fecha(f.actualizado) : info.consultado ? 'consultada el ' + fecha(info.consultado) : '';
+      return '<a href="' + esc(f.url) + '" target="_blank" rel="noopener">' + esc(info.nombre || f.id) + '</a>' +
+        (cuando ? ' (' + esc(cuando) + ')' : '');
+    }).join(', ');
   }
 
   function verificacion(p) {
@@ -56,8 +72,9 @@
       return '<p class="popup-verificacion verificada">Verificado por Perulineras el ' + esc(fecha(p.verificacion.fecha)) +
         (p.verificacion.fuente ? ' (' + esc(p.verificacion.fuente) + ')' : '') + '.</p>';
     }
-    return '<p class="popup-verificacion">No verificado por Perulineras. Fuente: OpenStreetMap' +
-      (fechaDatos ? ', consultado el ' + esc(fechaDatos) : '') + '. Confirma condiciones y disponibilidad con el operador.</p>';
+    return '<p class="popup-verificacion">No verificado por Perulineras. Fuente: ' + (fuentes(p) || 'desconocida') +
+      '.' + (p.precision === 'lugar' ? ' Ubicación aproximada del establecimiento.' : '') +
+      ' Confirma condiciones y disponibilidad con el operador.</p>';
   }
 
   function popup(f) {
@@ -67,9 +84,11 @@
       ['Operador', operador(p)],
       ['Dirección', direccion(p)],
       ['Conectores', conectores(p)],
+      ['Potencia', potencia(p)],
+      ['Equipo', p.equipo || ''],
       ['Acceso', acceso(p)],
-      ['Costo', p.fee === 'no' ? 'Gratuito' : p.fee === 'yes' ? 'De pago' : ''],
-      ['Horario', p.opening_hours === '24/7' ? '24 horas' : p.opening_hours || '']
+      ['Costo', { gratuito: 'Gratuito', pago: 'De pago' }[p.costo] || ''],
+      ['Horario', p.horario === '24/7' ? '24 horas' : p.horario || '']
     ];
     var dl = filas.map(function (r) {
       // conectores ya viene escapado por partes; el resto se escapa aquí
@@ -79,13 +98,15 @@
     return '<div class="popup"><h3>' + esc(titulo(p)) + '</h3><dl>' + dl + '</dl>' + verificacion(p) +
       '<div class="popup-enlaces">' +
       '<a href="https://www.google.com/maps/dir/?api=1&amp;destination=' + lat + ',' + lon + '" target="_blank" rel="noopener">Cómo llegar</a>' +
-      '<a href="https://www.openstreetmap.org/' + esc(p.osm) + '" target="_blank" rel="noopener">Ver o corregir en OSM</a>' +
+      (p.osm ? '<a href="https://www.openstreetmap.org/' + esc(p.osm) + '" target="_blank" rel="noopener">Ver o corregir en OSM</a>' : '') +
+      '<a href="/nosotros/#reportar">Reportar un error</a>' +
       '</div></div>';
   }
 
   fetch(contenedor.getAttribute('data-mapa'))
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then(function (datos) {
+      ((datos.metadata && datos.metadata.fuentes) || []).forEach(function (f) { infoFuente[f.id] = f; });
       var actualizado = datos.metadata && datos.metadata.actualizado;
       if (actualizado) {
         fechaDatos = fecha(actualizado);
@@ -100,7 +121,7 @@
           .bindPopup(popup(f), { maxWidth: 300 });
         capa.addLayer(m);
         m.feature = f;
-        m.texto = [titulo(p), operador(p), direccion(p)].join(' ').toLowerCase();
+        m.texto = [titulo(p), operador(p), direccion(p), p.equipo].join(' ').toLowerCase();
         return m;
       });
 
@@ -128,7 +149,7 @@
       var b = document.createElement('button');
       b.type = 'button';
       b.setAttribute('aria-pressed', 'false');
-      b.innerHTML = '<strong>' + esc(titulo(p)) + '</strong><span>' + esc(operador(p) || 'Operador desconocido') + (p['addr:city'] ? ' · ' + esc(p['addr:city']) : '') + '</span>';
+      b.innerHTML = '<strong>' + esc(titulo(p)) + '</strong><span>' + esc([operador(p), p.localidad].filter(Boolean).join(' · ') || 'Ubicación sin detalle') + '</span>';
       b.addEventListener('click', function () {
         if (activo) activo.setAttribute('aria-pressed', 'false');
         b.setAttribute('aria-pressed', 'true');
