@@ -1,40 +1,184 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-PE">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Perulineras: infraestructura, carga y movilidad eléctrica en Perú.">
-  <title>Perulineras | Movilidad eléctrica</title>
-  <style>
-    *{box-sizing:border-box}body{margin:0;background:#05152f;color:#f8fbff;font-family:Arial,sans-serif}
-    main,footer{width:min(1100px,calc(100% - 40px));margin:auto}
-    nav{height:100px;display:flex;align-items:center;justify-content:space-between}
-    .brand{font-size:clamp(24px,4vw,38px);font-weight:900;font-style:italic}.brand b{color:#e10600;font-family:serif}
-    .hero{min-height:65vh;display:flex;flex-direction:column;justify-content:center}
-    small{color:#83aff0;text-transform:uppercase;letter-spacing:.2em}
-    h1{font-size:clamp(52px,9vw,110px);line-height:.92;letter-spacing:-.06em;margin:25px 0}
-    h1 em{color:#e10600;font-style:normal}p{max-width:620px;color:#b9c7dc;font-size:20px;line-height:1.6}
-    .pillars{display:grid;grid-template-columns:repeat(3,1fr);border-block:1px solid #ffffff22}
-    article{padding:28px 25px 28px 0}article+article{border-left:1px solid #ffffff22;padding-left:25px}
-    article span{color:#e10600;font-weight:bold}article h2{font-size:18px;margin:10px 0}article p{font-size:14px;margin:0}
-    footer{height:90px;color:#7086a8;font-size:12px;display:flex;align-items:center;justify-content:space-between}
-    @media(max-width:650px){.pillars{grid-template-columns:1fr}article+article{border-left:0;border-top:1px solid #ffffff22;padding-left:0}}
-  </style>
+  <title>Perulineras | Mapa de electrolineras del Perú</title>
+  <meta name="description" content="Perulineras integra la infraestructura de carga de diferentes proveedores en un solo mapa de electrolineras públicas del Perú.">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_PE">
+  <meta property="og:site_name" content="Perulineras">
+  <meta property="og:title" content="Perulineras — Una red. Todos los cargadores.">
+  <meta property="og:description" content="Integramos la infraestructura de carga de diferentes proveedores para que moverse en eléctrico por el Perú sea más simple.">
+  <meta property="og:image" content="assets/og-perulineras.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="assets/estilos.css">
 </head>
 <body>
-  <main>
-    <nav><div class="brand">PERULIN<b>e</b>RAS</div><small>Próximamente</small></nav>
-    <section class="hero">
-      <small>Energía para avanzar</small>
-      <h1>El futuro de la movilidad se carga <em>aquí.</em></h1>
-      <p>Desarrollamos infraestructura de carga confiable para impulsar la movilidad eléctrica en el Perú.</p>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <header class="header">
+    <div class="contenedor header-interior">
+      <a class="marca" href="./" aria-label="Perulineras, inicio">
+        <img src="assets/logo-perulineras.png" alt="Perulineras" width="788" height="116">
+      </a>
+      <button class="menu-boton" type="button" aria-expanded="false" aria-controls="nav-principal" aria-label="Abrir menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav" id="nav-principal" aria-label="Principal">
+        <a href="mapa/">Mapa</a>
+        <a href="#red">Red de carga</a>
+        <a href="#datos">Datos</a>
+        <a href="#nosotros">Nosotros</a>
+        <a class="enlace-observatorio" href="https://www.electromovilidad.la" target="_blank" rel="noopener">Observatorio electromovilidad.la
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          <span class="sr">(abre en una pestaña nueva)</span></a>
+        <a class="boton boton-primario" href="mapa/">Ver mapa</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" aria-labelledby="titulo-hero">
+      <div class="contenedor hero-grid">
+        <div>
+          <p class="etiqueta">Electrolineras del Perú</p>
+          <h1 id="titulo-hero">Una red. <span>Todos los cargadores.</span></h1>
+          <p class="hero-texto">Integramos la infraestructura de carga de diferentes proveedores para que moverse en eléctrico por el Perú sea más simple.</p>
+          <div class="acciones">
+            <a class="boton boton-primario" href="mapa/">
+              Ver mapa de electrolineras
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="boton boton-secundario" href="#red">Conoce Perulineras</a>
+          </div>
+          <p class="dato-mapa"><strong data-conteo>…</strong> electrolineras públicas registradas hoy en OpenStreetMap. Datos actualizados al <span data-actualizado>…</span>.</p>
+        </div>
+        <figure class="mapa-tarjeta" style="margin:0">
+          <div class="mapa" data-mapa="data/electrolineras.geojson" role="region" aria-label="Mapa del Perú con electrolineras públicas"></div>
+          <figcaption class="mapa-pie">
+            <span>Fuente: OpenStreetMap. Cobertura en construcción.</span>
+            <a href="mapa/">Abrir mapa completo →</a>
+          </figcaption>
+        </figure>
+      </div>
     </section>
-    <section class="pillars">
-      <article><span>01</span><h2>Infraestructura</h2><p>Soluciones preparadas para crecer.</p></article>
-      <article><span>02</span><h2>Carga</h2><p>Tecnología segura y confiable.</p></article>
-      <article><span>03</span><h2>Movilidad</h2><p>Un Perú más limpio y conectado.</p></article>
+
+    <section class="seccion" id="red" aria-labelledby="titulo-red">
+      <div class="contenedor">
+        <div class="seccion-cabecera">
+          <p class="etiqueta">Red integrada</p>
+          <h2 id="titulo-red">Todos los operadores, en un solo lugar</h2>
+          <p>Perulineras es una plataforma independiente: no pertenece a un único proveedor de carga. Reunimos los puntos de carga de múltiples operadores y proveedores en una experiencia unificada.</p>
+        </div>
+        <div class="tarjetas">
+          <article class="tarjeta">
+            <div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8 7.5l2.8 8.2M16 7.5l-2.8 8.2M8.5 6h7"/></svg></div>
+            <h3>Integradora</h3>
+            <p>Cargadores de distintas redes, comercios, estacionamientos y estaciones de servicio en un mismo mapa.</p>
+          </article>
+          <article class="tarjeta">
+            <div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
+            <h3>Independiente</h3>
+            <p>Mostramos la infraestructura disponible sin favorecer a ningún operador en particular.</p>
+          </article>
+          <article class="tarjeta">
+            <div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
+            <h3>Pensada para conducir</h3>
+            <p>Encuentra dónde cargar antes de salir y planifica tus rutas en eléctrico por todo el país.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion seccion-alt" id="datos" aria-labelledby="titulo-datos">
+      <div class="contenedor">
+        <div class="seccion-cabecera">
+          <p class="etiqueta">Información útil</p>
+          <h2 id="titulo-datos">Lo que necesitas saber antes de cargar</h2>
+          <p>Para cada electrolinera, el mapa muestra la información disponible:</p>
+        </div>
+        <ul class="campos">
+          <li>
+            <div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div>
+            <div><strong>Ubicación</strong><span>Posición exacta y dirección del punto de carga.</span></div>
+          </li>
+          <li>
+            <div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2v5M15 2v5M6 7h12v4a6 6 0 0 1-12 0zM12 17v5"/></svg></div>
+            <div><strong>Tipo de conector</strong><span>Tipo 2, CCS2, CHAdeMO, GB/T y otros.</span></div>
+          </li>
+          <li>
+            <div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
+            <div><strong>Potencia</strong><span>Capacidad de carga en kW por conector.</span></div>
+          </li>
+          <li>
+            <div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></div>
+            <div><strong>Operador</strong><span>Quién gestiona la electrolinera.</span></div>
+          </li>
+          <li>
+            <div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+            <div><strong>Disponibilidad</strong><span>Horario de atención y, cuando exista, estado en tiempo real.</span></div>
+          </li>
+          <li>
+            <div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-8-8 18-2-8z"/></svg></div>
+            <div><strong>Cómo llegar</strong><span>Indicaciones directas desde tu ubicación.</span></div>
+          </li>
+        </ul>
+        <p class="nota">Los datos provienen de fuentes abiertas como OpenStreetMap y de los propios operadores. No todas las electrolineras tienen todavía información completa; la iremos ampliando a medida que se integren más redes.</p>
+      </div>
+    </section>
+
+    <section class="seccion" id="nosotros" aria-labelledby="titulo-nosotros">
+      <div class="contenedor historia">
+        <div>
+          <p class="etiqueta">Del observatorio a la infraestructura</p>
+          <h2 id="titulo-nosotros">De la investigación a una herramienta para el Perú</h2>
+          <p>Perulineras nace de <a href="https://www.electromovilidad.la" target="_blank" rel="noopener">electromovilidad.la</a>, el observatorio regional que investiga y visualiza el avance de la movilidad eléctrica en América Latina.</p>
+          <p>Ahora convertimos ese conocimiento en una herramienta práctica, enfocada en la infraestructura de carga del Perú.</p>
+        </div>
+        <ol class="linea">
+          <li><strong>electromovilidad.la</strong><span>Observatorio regional: investigación, datos y visualización sobre electromovilidad en la región.</span></li>
+          <li><strong>Perulineras</strong><span>Plataforma integradora de la infraestructura de carga del Perú, pensada para quienes conducen.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="seccion" id="integra" aria-labelledby="titulo-integra" style="padding-top:0">
+      <div class="contenedor">
+        <div class="cta">
+          <div>
+            <h2 id="titulo-integra">¿Operas cargadores?</h2>
+            <p>Integra tu red en Perulineras o ayúdanos a corregir la información existente para que más conductores encuentren dónde cargar.</p>
+          </div>
+          <div class="acciones">
+            <a class="boton boton-primario" href="https://github.com/mobilitycommons/perulineras-web/issues/new?title=Integrar%20red%20de%20carga" target="_blank" rel="noopener">Integra tu red</a>
+            <a class="boton boton-secundario" href="https://wiki.openstreetmap.org/wiki/ES:Tag:amenity%3Dcharging_station" target="_blank" rel="noopener">Agregar en OpenStreetMap</a>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
-  <footer><span>© 2026 Perulineras</span><span>Perú</span></footer>
+
+  <footer class="footer">
+    <div class="contenedor footer-interior">
+      <img src="assets/logo-perulineras.png" alt="Perulineras" width="788" height="116">
+      <nav aria-label="Pie de página">
+        <a href="mapa/">Mapa</a>
+        <a href="https://www.electromovilidad.la" target="_blank" rel="noopener">electromovilidad.la</a>
+        <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">Datos © OpenStreetMap</a>
+      </nav>
+      <span>© 2026 Perulineras</span>
+    </div>
+  </footer>
+
+  <script src="assets/vendor/leaflet/leaflet.js"></script>
+  <script src="assets/sitio.js"></script>
+  <script src="assets/mapa.js"></script>
 </body>
 </html>

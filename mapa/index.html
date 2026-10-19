@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es-PE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mapa de electrolineras públicas del Perú | Perulineras</title>
+  <meta name="description" content="Encuentra electrolineras públicas en el Perú: ubicación, conectores, potencia, operador y cómo llegar.">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_PE">
+  <meta property="og:site_name" content="Perulineras">
+  <meta property="og:title" content="Mapa de electrolineras públicas del Perú">
+  <meta property="og:description" content="Ubicación, conectores, potencia, operador y cómo llegar a las electrolineras públicas del Perú.">
+  <meta property="og:image" content="../assets/og-perulineras.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="../assets/vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="../assets/estilos.css">
+</head>
+<body class="pagina-mapa">
+  <a class="saltar" href="#lista-electrolineras">Saltar a la lista de electrolineras</a>
+
+  <header class="header">
+    <div class="contenedor header-interior">
+      <a class="marca" href="../" aria-label="Perulineras, inicio">
+        <img src="../assets/logo-perulineras.png" alt="Perulineras" width="788" height="116">
+      </a>
+      <button class="menu-boton" type="button" aria-expanded="false" aria-controls="nav-principal" aria-label="Abrir menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav" id="nav-principal" aria-label="Principal">
+        <a href="./" aria-current="page">Mapa</a>
+        <a href="../#red">Red de carga</a>
+        <a href="../#datos">Datos</a>
+        <a href="../#nosotros">Nosotros</a>
+        <a class="enlace-observatorio" href="https://www.electromovilidad.la" target="_blank" rel="noopener">Observatorio electromovilidad.la
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          <span class="sr">(abre en una pestaña nueva)</span></a>
+        <a class="boton boton-primario" href="../#integra">Integra tu red</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mapa-layout">
+    <aside class="panel" aria-labelledby="titulo-mapa">
+      <div class="panel-cabecera">
+        <h1 id="titulo-mapa">Electrolineras públicas</h1>
+        <p><strong data-conteo>…</strong> puntos de carga · actualizado al <span data-actualizado>…</span></p>
+        <label class="sr" for="buscar">Buscar electrolinera</label>
+        <input class="buscador" id="buscar" type="search" placeholder="Buscar por nombre, operador o ciudad" autocomplete="off" data-buscador>
+      </div>
+      <ul class="lista" id="lista-electrolineras" aria-label="Lista de electrolineras" data-lista></ul>
+      <div class="panel-pie">
+        <p>Fuente: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>. La cobertura aún es parcial.</p>
+        <p>¿Falta una electrolinera o hay un dato incorrecto? <a href="../#integra">Ayúdanos a completarla</a>.</p>
+      </div>
+    </aside>
+    <div class="mapa mapa-completo" data-mapa="../data/electrolineras.geojson" data-zoom-rueda role="region" aria-label="Mapa del Perú con electrolineras públicas"></div>
+  </main>
+
+  <script src="../assets/vendor/leaflet/leaflet.js"></script>
+  <script src="../assets/sitio.js"></script>
+  <script src="../assets/mapa.js"></script>
+</body>
+</html>

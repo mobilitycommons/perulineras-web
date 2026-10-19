@@ -155,3 +155,12 @@ Rama principal:
 `main`
 
 La autenticación Git está configurada mediante GitHub CLI. Nunca guardar contraseñas, tokens ni secretos dentro del repositorio.
+
+## Estado de la implementación (2026-10-19)
+
+- Rediseño claro implementado en `index.html` y mapa completo en `/mapa/`.
+- Mapa con Leaflet + teselas de OpenStreetMap; datos de electrolineras públicas desde OpenStreetMap (`data/electrolineras.geojson`), excluyendo `access=private/customers/no/permit/delivery`.
+- El conteo de electrolineras se calcula desde los datos reales del mapa.
+- Logo provisional extraído del tablero de marca (`assets/logo-perulineras.png`, versión blanca e isotipo). Sustituir por los archivos oficiales aislados cuando estén disponibles.
+- “Integra tu red” apunta provisionalmente a GitHub Issues hasta confirmar un correo de contacto.
+- El mapa base usa las teselas públicas de OpenStreetMap (sujeto a su política de uso); con tráfico alto conviene un proveedor de teselas propio o contratado.
