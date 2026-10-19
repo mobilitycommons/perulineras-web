@@ -54,32 +54,35 @@
           <h1 id="titulo-mapa">Electrolineras públicas</h1>
           <p><strong data-conteo>…</strong> puntos según fuentes públicas · datos al <span data-actualizado>…</span></p>
           <label class="sr" for="buscar">Buscar electrolinera</label>
-          <input class="buscador" id="buscar" type="search" placeholder="Buscar por nombre, operador o dirección" autocomplete="off" data-buscador>
+          <div class="buscador-icono">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input class="buscador" id="buscar" type="search" placeholder="Buscar por nombre, operador o dirección" autocomplete="off" data-buscador>
+          </div>
           <div class="filtros" role="group" aria-label="Filtros">
             <fieldset class="filtro">
-              <legend>Tipo de carga</legend>
+              <legend><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>Tipo de carga</legend>
               <div class="chips" data-filtro-carga>
                 <button type="button" class="chip-filtro" aria-pressed="true" data-valor="">Todas</button>
-                <button type="button" class="chip-filtro" aria-pressed="false" data-valor="DC">Rápida (DC)</button>
-                <button type="button" class="chip-filtro" aria-pressed="false" data-valor="AC">Lenta (AC)</button>
+                <button type="button" class="chip-filtro" aria-pressed="false" data-valor="DC"><i class="punto punto-dc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z" fill="currentColor"/></svg></i>Rápida (DC)</button>
+                <button type="button" class="chip-filtro" aria-pressed="false" data-valor="AC"><i class="punto"></i>Lenta (AC)</button>
               </div>
             </fieldset>
             <fieldset class="filtro">
-              <legend>Conector</legend>
+              <legend><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></svg>Conector</legend>
               <div class="chips" data-filtro-conector></div>
             </fieldset>
             <div class="filtro">
-              <label for="filtro-localidad">Ubicación</label>
+              <label for="filtro-localidad"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5-5.5 10.2-7.4 11.8a1 1 0 0 1-1.2 0C9.5 20.2 4 15 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Ubicación</label>
               <select class="selector" id="filtro-localidad" data-filtro-localidad>
                 <option value="">Todo el Perú</option>
               </select>
             </div>
           </div>
-          <p class="resultado" aria-live="polite"><span data-resultado></span> <button type="button" class="boton-texto" data-limpiar hidden>Limpiar filtros</button></p>
+          <p class="resultado" aria-live="polite"><span data-resultado></span> <button type="button" class="boton-texto" data-limpiar hidden><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>Limpiar filtros</button></p>
         </div>
         <ul class="lista" id="lista-electrolineras" aria-label="Lista de electrolineras" data-lista></ul>
         <div class="panel-pie">
-          <p><strong>Cobertura parcial.</strong> Fuentes: <a href="https://aap.org.pe/electrolineras" target="_blank" rel="noopener">padrón de la AAP</a>, <a href="https://openchargemap.org/" target="_blank" rel="noopener">Open Charge Map</a> (CC BY 4.0) y <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> (ODbL). Los datos no están verificados por Perulineras salvo indicación; confirma condiciones con cada operador.</p>
+          <p class="panel-aviso"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><span><strong>Cobertura parcial.</strong> Fuentes: <a href="https://aap.org.pe/electrolineras" target="_blank" rel="noopener">padrón de la AAP</a>, <a href="https://openchargemap.org/" target="_blank" rel="noopener">Open Charge Map</a> (CC BY 4.0) y <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> (ODbL). Los datos no están verificados por Perulineras salvo indicación; confirma condiciones con cada operador.</span></p>
           <p>¿Falta una electrolinera o hay un error? <a href="/nosotros/#reportar">Repórtalo</a>.</p>
         </div>
       </div>
