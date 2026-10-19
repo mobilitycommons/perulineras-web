@@ -1,14 +1,7 @@
-// Header: sombra al hacer scroll y menú móvil accesible.
+// Header: menú móvil accesible.
 (function () {
-  var header = document.querySelector('.header');
   var boton = document.querySelector('.menu-boton');
   var nav = document.getElementById('nav-principal');
-
-  if (header) {
-    var marcar = function () { header.classList.toggle('con-scroll', window.scrollY > 4); };
-    marcar();
-    window.addEventListener('scroll', marcar, { passive: true });
-  }
 
   if (!boton || !nav) return;
 

@@ -21,11 +21,13 @@ Perulineras debe presentarse como una plataforma integradora e independiente, no
 - Usar rojo como acento y para la acción principal.
 - Apariencia limpia, tecnológica, confiable e institucional.
 - Diseño responsive para escritorio y móvil.
-- Inspirarse en la claridad del header de electromovilidad.la, sin copiarlo literalmente.
+- Header con el mismo diseño que electromovilidad.la (ver sección Header).
 
 ## Header
 
-Header compacto, fijo y con fondo blanco:
+Header con el mismo diseño que electromovilidad.la (decisión del 2026-10-19): barra fija de ancho completo, 52 px de alto, fondo azul marino oscuro, logo en versión para fondo oscuro a la izquierda, navegación centrada en texto pequeño con subrayado en el enlace activo y botones compactos a la derecha. En Perulineras el acento del subrayado es rojo y la tipografía es Manrope, como en el observatorio. El resto de la página mantiene fondo blanco.
+
+Contenido:
 
 - Logo de Perulineras a la izquierda.
 - Navegación:
@@ -36,7 +38,7 @@ Header compacto, fijo y con fondo blanco:
 - Botón principal rojo: “Ver mapa”.
 - Enlace secundario al “Observatorio electromovilidad.la”.
 - Menú móvil accesible.
-- Borde inferior o sombra muy sutil al hacer scroll.
+- Borde inferior sutil.
 
 ## Hero
 

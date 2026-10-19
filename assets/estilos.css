@@ -1,10 +1,12 @@
 /* Perulineras — estilos compartidos */
+@font-face{font-family:Manrope;font-style:normal;font-weight:400 800;font-display:swap;src:url(fuentes/manrope-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 :root{
   --azul:#0a2e6b;
   --azul-medio:#1f4a94;
   --azul-suave:#eef3fb;
   --rojo:#e10600;
   --rojo-hover:#b80500;
+  --rojo-claro:#ff3b30;
   --texto:#16233b;
   --texto-suave:#4a5872;
   --borde:#dde4ef;
@@ -13,8 +15,8 @@
   --radio:14px;
   --sombra:0 1px 2px rgba(10,46,107,.06),0 8px 24px rgba(10,46,107,.08);
   --ancho:1180px;
-  --alto-header:72px;
-  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --alto-header:52px;
+  font-family:Manrope,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   color-scheme:light;
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -42,30 +44,40 @@ p{margin:0 0 1em}
 .boton-secundario:hover{border-color:var(--azul)}
 .boton svg{width:1.1em;height:1.1em;flex:none}
 
-/* Header */
-.header{position:sticky;top:0;z-index:1000;background:#fff;border-bottom:1px solid transparent;transition:border-color .2s,box-shadow .2s}
-.header.con-scroll{border-bottom-color:var(--borde);box-shadow:0 4px 16px rgba(10,46,107,.06)}
-.header-interior{height:var(--alto-header);display:flex;align-items:center;gap:24px}
-.marca{flex:none;display:block;line-height:0}
-.marca img{height:30px;width:auto}
-.nav{display:flex;align-items:center;gap:4px;margin-left:auto}
-.nav a{color:var(--azul);text-decoration:none;font-weight:600;font-size:.95rem;padding:.5em .8em;border-radius:8px}
-.nav a:hover{background:var(--azul-suave)}
-.nav a[aria-current="page"]{color:var(--rojo)}
-.nav .enlace-observatorio{color:var(--texto-suave);font-weight:500;font-size:.88rem;display:inline-flex;align-items:center;gap:.35em;margin-left:8px;padding-left:16px;border-left:1px solid var(--borde);border-radius:0}
-.nav .enlace-observatorio:hover{background:none;color:var(--azul)}
-.nav .boton{margin-left:12px;padding:.5em 1.1em;min-height:40px}
-.nav .boton-primario{color:#fff}
-.nav .boton:hover{background:var(--rojo-hover)}
-.menu-boton{display:none;margin-left:auto;width:44px;height:44px;border:1px solid var(--borde);background:#fff;border-radius:10px;color:var(--azul);cursor:pointer;align-items:center;justify-content:center}
-.menu-boton svg{width:22px;height:22px}
+/* Header (mismo patrón que electromovilidad.la, con colores Perulineras) */
+.header{position:sticky;top:0;z-index:1000;background:rgba(5,26,63,.97);border-bottom:1px solid rgba(255,255,255,.1);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.header :focus-visible{outline-color:#fff}
+.header-interior{position:relative;height:var(--alto-header);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 16px}
+@media (min-width:640px){.header-interior{padding:0 24px}}
+@media (min-width:1024px){.header-interior{padding:0 32px}}
+.marca{flex:none;display:flex;align-items:center;height:32px;line-height:0}
+.marca img{height:22px;width:auto}
+.nav{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:2px}
+.nav a{position:relative;color:#e2e8f0;text-decoration:none;font-size:13px;font-weight:500;padding:6px 10px;border-radius:6px;transition:color .15s}
+.nav a:hover{color:#fff}
+.nav a[aria-current="page"]{color:#fff}
+.nav a[aria-current="page"]::after{content:"";position:absolute;left:10px;right:10px;bottom:2px;height:2px;border-radius:999px;background:var(--rojo-claro)}
+.nav .solo-movil{display:none}
+.header-acciones{display:flex;align-items:center;justify-content:flex-end;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 10px;border:1px solid rgba(255,255,255,.15);border-radius:6px;color:#cbd5e1;font-size:12.5px;font-weight:500;text-decoration:none;white-space:nowrap;transition:border-color .15s,color .15s}
+.chip:hover{border-color:rgba(255,255,255,.3);color:#fff}
+.chip svg{width:12px;height:12px}
+.boton-header{display:inline-flex;align-items:center;height:32px;padding:0 12px;border-radius:6px;background:var(--rojo);color:#fff;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;transition:background .15s}
+.boton-header:hover{background:var(--rojo-hover)}
+.menu-boton{display:none;width:32px;height:32px;padding:0;border:1px solid rgba(255,255,255,.2);background:transparent;border-radius:6px;color:#cbd5e1;cursor:pointer;align-items:center;justify-content:center}
+.menu-boton:hover{color:#fff}
+.menu-boton svg{width:16px;height:16px}
 @media (max-width:960px){
   .menu-boton{display:inline-flex}
-  .nav{display:none;position:absolute;left:0;right:0;top:var(--alto-header);flex-direction:column;align-items:stretch;gap:0;padding:8px 16px 20px;background:#fff;border-bottom:1px solid var(--borde);box-shadow:0 12px 24px rgba(10,46,107,.08)}
+  .header-acciones .chip{display:none}
+  .nav{display:none;position:absolute;left:auto;right:16px;top:calc(100% + 8px);transform:none;width:13rem;flex-direction:column;align-items:stretch;gap:0;padding:4px 0;background:#051a3f;border:1px solid rgba(255,255,255,.1);border-radius:8px;box-shadow:0 18px 40px rgba(0,0,0,.35)}
   .nav.abierto{display:flex}
-  .nav a{padding:.85em .5em;border-radius:0;border-bottom:1px solid var(--borde)}
-  .nav .enlace-observatorio{margin:0;padding-left:.5em;border-left:0}
-  .nav .boton{margin:16px 0 0;border-radius:999px;border-bottom:0}
+  .nav a{padding:9px 14px;border-radius:0}
+  .nav a:hover{background:rgba(255,255,255,.06)}
+  .nav a:focus-visible{outline-offset:-3px}
+  .nav a[aria-current="page"]::after{left:0;right:auto;top:8px;bottom:8px;width:2px;height:auto}
+  .nav .solo-movil{display:flex;align-items:center;gap:6px;border-top:1px solid rgba(255,255,255,.1);margin-top:4px;padding-top:11px;color:#cbd5e1}
+  .nav .solo-movil svg{width:12px;height:12px}
 }
 
 /* Hero */
@@ -161,7 +173,6 @@ p{margin:0 0 1em}
 
 /* Página del mapa */
 .pagina-mapa{height:100dvh;display:flex;flex-direction:column;overflow:hidden}
-.pagina-mapa .header{border-bottom-color:var(--borde)}
 .mapa-layout{flex:1;display:grid;grid-template-columns:360px 1fr;min-height:0}
 .panel{border-right:1px solid var(--borde);display:flex;flex-direction:column;min-height:0;background:#fff}
 .panel-cabecera{padding:20px 20px 14px;border-bottom:1px solid var(--borde)}
