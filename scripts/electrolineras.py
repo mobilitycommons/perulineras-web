@@ -32,6 +32,7 @@ GEOJSON = DATOS / "electrolineras.geojson"
 
 UNION_AUTOMATICA_M = 100     # registros de distintas fuentes a menos de esta distancia = misma estación
 POSIBLE_DUPLICADO_M = 2000   # hasta esta distancia se listan para revisión manual
+PERU = (-18.5, -81.5, 0.1, -68.5)  # sur, oeste, norte, este: fuera de este recuadro la coordenada es un error
 
 CAMPOS = ["nombre", "operador", "equipo", "direccion", "localidad", "acceso", "costo", "horario"]
 FICHA_TECNICA = ["cargadores", "conectores_total", "potencia_max_kw", "conectores"]
@@ -120,6 +121,12 @@ def cargar():
     for rid, motivo in ajustes.get("excluir", {}).items():
         if rid in registros:
             registros[rid]["excluido"] = motivo
+    for r in registros.values():
+        if r.get("lat") is not None and not (PERU[0] <= r["lat"] <= PERU[2] and PERU[1] <= r["lon"] <= PERU[3]):
+            print(f"  Aviso: {r['id']} tiene coordenadas fuera del Perú ({r['lat']}, {r['lon']}); se descartan. "
+                  "Corrígelas en data/curado/ajustes.json.", file=sys.stderr)
+            r["coordenadas_descartadas"] = [r["lat"], r["lon"]]
+            r["lat"] = r["lon"] = None
     return fuentes, ajustes, registros
 
 

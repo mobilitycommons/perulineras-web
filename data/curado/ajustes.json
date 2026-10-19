@@ -30,13 +30,19 @@
       "ocm:469282"
     ]
   ],
-  "correcciones": {},
+  "correcciones": {
+    "aap:25": {
+      "lat": -12.682687,
+      "lon": -76.649938
+    }
+  },
   "verificaciones": {},
   "altas": [],
   "_notas": {
     "aap:43 + osm:node/13594544866": "Casa Andina Piura: mismo hotel (102 m; OSM sin nombre, operador Hotel Casa Andina).",
     "aap:20 + osm:node/4039208920": "Lima Expresa: mismo operador a 235 m; la AAP ubica el establecimiento y OSM el punto.",
     "aap:33 / ocm:309751": "Jockey Plaza: equipos distintos (AAP: CVE EVBOX 22 kW; OCM: red Voltrelli, reportada no operativa). Se mantienen separados para no ocultar el de la AAP.",
-    "aap:18 / ocm:469282": "Chiclayo: hotel Casa Andina y Mall Real Plaza son lugares distintos (OCM ya se une con aap:19)."
+    "aap:18 / ocm:469282": "Chiclayo: hotel Casa Andina y Mall Real Plaza son lugares distintos (OCM ya se une con aap:19).",
+    "aap:25": "Grifo San Pedro de Mala: el enlace de la AAP usa el Plus Code corto 8982+W24, que Google resuelve en San Antonio (Texas). Decodificado con referencia en Mala: 57V58982+W24 → -12.682687, -76.649938 (Panamericana Sur km 86,5)."
   }
 }

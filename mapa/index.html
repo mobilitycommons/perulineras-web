@@ -48,18 +48,42 @@
   </header>
 
   <main class="mapa-layout">
-    <aside class="panel" aria-labelledby="titulo-mapa">
-      <div class="panel-cabecera">
-        <h1 id="titulo-mapa">Electrolineras públicas</h1>
-        <p><strong data-conteo>…</strong> puntos según fuentes públicas · datos al <span data-actualizado>…</span></p>
-        <label class="sr" for="buscar">Buscar electrolinera</label>
-        <input class="buscador" id="buscar" type="search" placeholder="Buscar por nombre, operador o dirección" autocomplete="off" data-buscador>
+    <aside class="panel" aria-labelledby="titulo-mapa" data-panel>
+      <div class="panel-vista" data-vista-lista>
+        <div class="panel-cabecera">
+          <h1 id="titulo-mapa">Electrolineras públicas</h1>
+          <p><strong data-conteo>…</strong> puntos según fuentes públicas · datos al <span data-actualizado>…</span></p>
+          <label class="sr" for="buscar">Buscar electrolinera</label>
+          <input class="buscador" id="buscar" type="search" placeholder="Buscar por nombre, operador o dirección" autocomplete="off" data-buscador>
+          <div class="filtros" role="group" aria-label="Filtros">
+            <fieldset class="filtro">
+              <legend>Tipo de carga</legend>
+              <div class="chips" data-filtro-carga>
+                <button type="button" class="chip-filtro" aria-pressed="true" data-valor="">Todas</button>
+                <button type="button" class="chip-filtro" aria-pressed="false" data-valor="DC">Rápida (DC)</button>
+                <button type="button" class="chip-filtro" aria-pressed="false" data-valor="AC">Lenta (AC)</button>
+              </div>
+            </fieldset>
+            <fieldset class="filtro">
+              <legend>Conector</legend>
+              <div class="chips" data-filtro-conector></div>
+            </fieldset>
+            <div class="filtro">
+              <label for="filtro-localidad">Ubicación</label>
+              <select class="selector" id="filtro-localidad" data-filtro-localidad>
+                <option value="">Todo el Perú</option>
+              </select>
+            </div>
+          </div>
+          <p class="resultado" aria-live="polite"><span data-resultado></span> <button type="button" class="boton-texto" data-limpiar hidden>Limpiar filtros</button></p>
+        </div>
+        <ul class="lista" id="lista-electrolineras" aria-label="Lista de electrolineras" data-lista></ul>
+        <div class="panel-pie">
+          <p><strong>Cobertura parcial.</strong> Fuentes: <a href="https://aap.org.pe/electrolineras" target="_blank" rel="noopener">padrón de la AAP</a>, <a href="https://openchargemap.org/" target="_blank" rel="noopener">Open Charge Map</a> (CC BY 4.0) y <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> (ODbL). Los datos no están verificados por Perulineras salvo indicación; confirma condiciones con cada operador.</p>
+          <p>¿Falta una electrolinera o hay un error? <a href="/nosotros/#reportar">Repórtalo</a>.</p>
+        </div>
       </div>
-      <ul class="lista" id="lista-electrolineras" aria-label="Lista de electrolineras" data-lista></ul>
-      <div class="panel-pie">
-        <p><strong>Cobertura parcial.</strong> Fuentes: <a href="https://aap.org.pe/electrolineras" target="_blank" rel="noopener">padrón de la AAP</a>, <a href="https://openchargemap.org/" target="_blank" rel="noopener">Open Charge Map</a> (CC BY 4.0) y <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> (ODbL). Los datos no están verificados por Perulineras salvo indicación; confirma condiciones con cada operador.</p>
-        <p>¿Falta una electrolinera o hay un error? <a href="/nosotros/#reportar">Repórtalo</a>.</p>
-      </div>
+      <section class="ficha" data-ficha hidden aria-labelledby="ficha-titulo"></section>
     </aside>
     <div class="mapa mapa-completo" data-mapa="/data/electrolineras.geojson" data-zoom-rueda role="region" aria-label="Mapa del Perú con electrolineras públicas"></div>
   </main>

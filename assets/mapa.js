@@ -2,6 +2,10 @@
 // scripts/electrolineras.py a partir de varias fuentes (AAP, Open Charge Map, OpenStreetMap).
 // Una estación se considera verificada solo si trae la propiedad
 // `verificacion: {fecha, fuente}`, añadida tras revisión de Perulineras.
+//
+// En /mapa (con [data-panel]) la ficha de la estación se abre en el panel lateral
+// (en móvil, como hoja inferior) y cada estación tiene enlace propio: /mapa/#<id>.
+// En la portada, el marcador abre un resumen con enlace a esa ficha.
 (function () {
   var contenedor = document.querySelector('[data-mapa]');
   if (!contenedor || !window.L) return;
@@ -12,6 +16,11 @@
     type2_cable: 'Tipo 2 (cable)', chademo: 'CHAdeMO', gb_t: 'GB/T', gb_t_dc: 'GB/T DC',
     schuko: 'Schuko', tesla_supercharger: 'Tesla', nema_5_15: 'NEMA 5-15', nema_14_50: 'NEMA 14-50'
   };
+  var CORRIENTE = { type1_combo: 'DC', type2_combo: 'DC', chademo: 'DC', gb_t_dc: 'DC', tesla_supercharger: 'DC' };
+  var RAYO = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z" fill="currentColor"/></svg>';
+
+  var panel = document.querySelector('[data-panel]');
+  var movil = window.matchMedia('(max-width: 820px)');
 
   var mapa = L.map(contenedor, {
     scrollWheelZoom: contenedor.hasAttribute('data-zoom-rueda')
@@ -24,9 +33,8 @@
   mapa.attributionControl.setPrefix(false);
   var capa = L.featureGroup().addTo(mapa);
 
-  var icono = L.divIcon({ className: '', html: '<span class="punto"></span>', iconSize: [18, 18], iconAnchor: [9, 9], popupAnchor: [0, -10] });
-  var fechaDatos = '';
   var infoFuente = {};
+  var esperaEncuadre; // reencuadre diferido tras buscar o filtrar
 
   function esc(t) {
     return String(t).replace(/[&<>"']/g, function (c) {
@@ -45,18 +53,19 @@
     return [p.direccion, incluida ? '' : p.localidad].filter(Boolean).join(', ');
   }
   function kw(n) { return String(n).replace('.', ',') + ' kW'; }
-  function conectores(p) {
-    return (p.conectores || []).map(function (c) {
-      var nombre = CONECTORES[c.tipo] || c.tipo;
-      return esc((c.cantidad ? c.cantidad + '× ' : '') + nombre + (c.potencia_kw ? ' · ' + kw(c.potencia_kw) : ''));
-    }).join('<br>');
-  }
-  function potencia(p) {
-    if (!p.potencia_max_kw) return '';
-    return 'Hasta ' + kw(p.potencia_max_kw) + (p.corriente ? ' (' + p.corriente.replace('/', ' y ') + ')' : '');
+  function nombreConector(tipo) { return CONECTORES[tipo] || tipo; }
+  function rapida(p) { return (p.corriente || '').indexOf('DC') !== -1; }
+  function tipoCarga(p) {
+    if (!p.corriente) return '';
+    return (rapida(p) ? 'Carga rápida (DC)' : 'Carga lenta (AC)') +
+      (p.potencia_max_kw ? ' · hasta ' + kw(p.potencia_max_kw) : '');
   }
   function acceso(p) {
     return { publico: 'Público', clientes: 'Solo clientes del establecimiento' }[p.acceso] || '';
+  }
+  function comoLlegar(f) {
+    var c = f.geometry.coordinates;
+    return 'https://www.google.com/maps/dir/?api=1&destination=' + c[1] + ',' + c[0];
   }
   function fuentes(p) {
     return (p.fuentes || []).map(function (f) {
@@ -74,34 +83,96 @@
     }
     return '<p class="popup-verificacion">No verificado por Perulineras. Fuente: ' + (fuentes(p) || 'desconocida') +
       '.' + (p.precision === 'lugar' ? ' Ubicación aproximada del establecimiento.' : '') +
-      ' Confirma condiciones y disponibilidad con el operador.</p>';
+      ' Sin estado en tiempo real: confirma condiciones y disponibilidad con el operador.</p>';
   }
 
-  function popup(f) {
+  // --- Marcadores ---------------------------------------------------------------
+
+  function icono(p, activo) {
+    var clase = 'punto' + (rapida(p) ? ' punto-dc' : p.corriente ? '' : ' punto-sd') + (activo ? ' punto-activo' : '');
+    var lado = rapida(p) ? 24 : 18;
+    if (activo) lado += 8;
+    return L.divIcon({
+      className: '', html: '<span class="' + clase + '">' + (rapida(p) ? RAYO : '') + '</span>',
+      iconSize: [lado, lado], iconAnchor: [lado / 2, lado / 2], popupAnchor: [0, -lado / 2 - 2]
+    });
+  }
+
+  var Leyenda = L.Control.extend({
+    options: { position: 'bottomleft' },
+    onAdd: function () {
+      var div = L.DomUtil.create('div', 'leyenda');
+      div.innerHTML = '<span><i class="punto punto-dc">' + RAYO + '</i>Rápida (DC)</span>' +
+        '<span><i class="punto"></i>Lenta (AC)</span><span><i class="punto punto-sd"></i>Sin dato</span>';
+      return div;
+    }
+  });
+  new Leyenda().addTo(mapa);
+
+  // Resumen en globo (portada, sin panel).
+  function resumen(f) {
     var p = f.properties;
-    var lat = f.geometry.coordinates[1], lon = f.geometry.coordinates[0];
-    var filas = [
-      ['Operador', operador(p)],
-      ['Dirección', direccion(p)],
-      ['Conectores', conectores(p)],
-      ['Potencia', potencia(p)],
-      ['Equipo', p.equipo || ''],
-      ['Acceso', acceso(p)],
-      ['Costo', { gratuito: 'Gratuito', pago: 'De pago' }[p.costo] || ''],
-      ['Horario', p.horario === '24/7' ? '24 horas' : p.horario || '']
-    ];
-    var dl = filas.map(function (r) {
-      // conectores ya viene escapado por partes; el resto se escapa aquí
-      var valor = r[0] === 'Conectores' ? r[1] : esc(r[1]);
-      return '<dt>' + r[0] + '</dt><dd>' + (r[1] ? valor : '<span class="sin-dato">Desconocido</span>') + '</dd>';
-    }).join('');
-    return '<div class="popup"><h3>' + esc(titulo(p)) + '</h3><dl>' + dl + '</dl>' + verificacion(p) +
+    var tipos = (p.conectores || []).map(function (c) { return nombreConector(c.tipo); }).join(', ');
+    return '<div class="popup"><h3>' + esc(titulo(p)) + '</h3>' +
+      '<p class="popup-linea">' + esc([operador(p), p.localidad].filter(Boolean).join(' · ') || 'Operador desconocido') + '</p>' +
+      '<p class="popup-linea"><strong>' + esc(tipoCarga(p) || 'Tipo de carga desconocido') + '</strong>' +
+      (tipos ? '<br>' + esc(tipos) : '') + '</p>' +
       '<div class="popup-enlaces">' +
-      '<a href="https://www.google.com/maps/dir/?api=1&amp;destination=' + lat + ',' + lon + '" target="_blank" rel="noopener">Cómo llegar</a>' +
-      (p.osm ? '<a href="https://www.openstreetmap.org/' + esc(p.osm) + '" target="_blank" rel="noopener">Ver o corregir en OSM</a>' : '') +
-      '<a href="/nosotros/#reportar">Reportar un error</a>' +
+      '<a href="/mapa/#' + esc(p.id) + '">Ver ficha completa</a>' +
+      '<a href="' + esc(comoLlegar(f)) + '" target="_blank" rel="noopener">Cómo llegar</a>' +
       '</div></div>';
   }
+
+  // --- Ficha (panel lateral / hoja inferior) -------------------------------------
+
+  function ficha(f) {
+    var p = f.properties;
+    var conectores = (p.conectores || []).map(function (c) {
+      var corriente = c.corriente || CORRIENTE[c.tipo] || 'AC';
+      return '<li class="conector conector-' + corriente.toLowerCase() + '">' +
+        '<strong>' + esc(nombreConector(c.tipo)) + '</strong>' +
+        '<span>' + esc(corriente) + (c.potencia_kw ? ' · ' + esc(kw(c.potencia_kw)) : '') + '</span>' +
+        '<span>' + (c.cantidad ? esc(c.cantidad + (c.cantidad === 1 ? ' conector' : ' conectores')) : '<span class="sin-dato">Cantidad sin dato</span>') + '</span>' +
+        '</li>';
+    }).join('');
+    var filas = [
+      ['Dirección', direccion(p)],
+      ['Operador', operador(p)],
+      ['Acceso', acceso(p)],
+      ['Costo', { gratuito: 'Gratuito', pago: 'De pago' }[p.costo] || ''],
+      ['Horario', p.horario === '24/7' ? '24 horas' : p.horario || ''],
+      ['Equipo', p.equipo || ''],
+      ['Cargadores', p.cargadores ? String(p.cargadores) : '']
+    ].map(function (r) {
+      return '<dt>' + r[0] + '</dt><dd>' + (r[1] ? esc(r[1]) : '<span class="sin-dato">Desconocido</span>') + '</dd>';
+    }).join('');
+
+    return '<button type="button" class="ficha-asa" data-asa aria-label="Expandir o reducir la ficha"><span></span></button>' +
+      '<div class="ficha-barra">' +
+      '<button type="button" class="ficha-volver" data-cerrar aria-label="Volver a la lista y cerrar la ficha">' +
+      '<span class="solo-escritorio">← Volver a la lista</span><span class="solo-movil-ficha">✕</span></button></div>' +
+      '<div class="ficha-cuerpo">' +
+      '<h2 id="ficha-titulo" tabindex="-1">' + esc(titulo(p)) + '</h2>' +
+      '<p class="ficha-sub">' + esc([operador(p), p.localidad].filter(Boolean).join(' · ') || 'Operador desconocido') + '</p>' +
+      '<p class="ficha-etiquetas">' +
+      (p.corriente ? '<span class="etiqueta-carga' + (rapida(p) ? ' etiqueta-dc' : '') + '">' + (rapida(p) ? RAYO : '') + esc(tipoCarga(p)) + '</span>' : '') +
+      (p.verificacion ? '<span class="etiqueta-estado verificada">Verificada</span>' : '<span class="etiqueta-estado">No verificada</span>') +
+      '</p>' +
+      '<div class="ficha-acciones">' +
+      '<a class="boton boton-primario" href="' + esc(comoLlegar(f)) + '" target="_blank" rel="noopener">Cómo llegar</a>' +
+      '<button type="button" class="boton boton-secundario" data-compartir>Compartir</button>' +
+      '</div>' +
+      '<h3>Conectores</h3>' +
+      (conectores ? '<ul class="conectores">' + conectores + '</ul>' : '<p class="sin-dato">Sin datos de conectores.</p>') +
+      '<h3>Detalles</h3><dl class="ficha-datos">' + filas + '</dl>' +
+      '<h3>Fuente y verificación</h3>' + verificacion(p) +
+      '<p class="ficha-enlaces">' +
+      (p.osm ? '<a href="https://www.openstreetmap.org/' + esc(p.osm) + '" target="_blank" rel="noopener">Ver o corregir en OpenStreetMap</a>' : '') +
+      '<a href="/nosotros/#reportar">Reportar un error</a>' +
+      '</p></div>';
+  }
+
+  // --- Carga de datos -------------------------------------------------------------
 
   fetch(contenedor.getAttribute('data-mapa'))
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
@@ -109,16 +180,15 @@
       ((datos.metadata && datos.metadata.fuentes) || []).forEach(function (f) { infoFuente[f.id] = f; });
       var actualizado = datos.metadata && datos.metadata.actualizado;
       if (actualizado) {
-        fechaDatos = fecha(actualizado);
-        document.querySelectorAll('[data-actualizado]').forEach(function (el) { el.textContent = fechaDatos; });
+        document.querySelectorAll('[data-actualizado]').forEach(function (el) { el.textContent = fecha(actualizado); });
       }
       document.querySelectorAll('[data-conteo]').forEach(function (el) { el.textContent = datos.features.length; });
 
       var marcadores = datos.features.map(function (f) {
         var c = f.geometry.coordinates;
         var p = f.properties;
-        var m = L.marker([c[1], c[0]], { icon: icono, title: titulo(p), alt: titulo(p), keyboard: true })
-          .bindPopup(popup(f), { maxWidth: 300 });
+        var m = L.marker([c[1], c[0]], { icon: icono(p), title: titulo(p), alt: titulo(p), keyboard: true, riseOnHover: true });
+        if (!panel) m.bindPopup(resumen(f), { maxWidth: 280 });
         capa.addLayer(m);
         m.feature = f;
         m.texto = [titulo(p), operador(p), direccion(p), p.equipo].join(' ').toLowerCase();
@@ -126,9 +196,12 @@
       });
 
       var items = construirLista(marcadores);
-      conectarBuscador(marcadores, items);
+      var fichas = panel ? conectarFicha(marcadores, items) : null;
+      conectarFiltros(marcadores, items);
+      if (fichas) fichas.abrirDesdeHash();
     })
-    .catch(function () {
+    .catch(function (e) {
+      if (window.console) console.error(e);
       document.querySelectorAll('[data-conteo]').forEach(function (el) { el.textContent = '—'; });
       var lista = document.querySelector('[data-lista]');
       if (lista) lista.innerHTML = '<li class="vacio">No se pudieron cargar los datos del mapa. Intenta recargar la página.</li>';
@@ -139,7 +212,6 @@
     var lista = document.querySelector('[data-lista]');
     if (!lista) return [];
 
-    var activo = null;
     var ordenados = marcadores.slice().sort(function (a, b) {
       return titulo(a.feature.properties).localeCompare(titulo(b.feature.properties), 'es');
     });
@@ -149,51 +221,269 @@
       var b = document.createElement('button');
       b.type = 'button';
       b.setAttribute('aria-pressed', 'false');
-      b.innerHTML = '<strong>' + esc(titulo(p)) + '</strong><span>' + esc([operador(p), p.localidad].filter(Boolean).join(' · ') || 'Ubicación sin detalle') + '</span>';
-      b.addEventListener('click', function () {
-        if (activo) activo.setAttribute('aria-pressed', 'false');
-        b.setAttribute('aria-pressed', 'true');
-        activo = b;
-        mapa.flyTo(m.getLatLng(), 16, { duration: 0.8 });
-        m.openPopup();
-      });
+      b.innerHTML = '<strong>' + esc(titulo(p)) + '</strong>' +
+        '<span>' + esc([operador(p), p.localidad].filter(Boolean).join(' · ') || 'Ubicación sin detalle') + '</span>' +
+        (p.corriente ? '<span class="lista-carga' + (rapida(p) ? ' lista-dc' : '') + '">' + esc(tipoCarga(p)) + '</span>' : '');
       li.appendChild(b);
       li.marcador = m;
+      li.boton = b;
+      m.item = li;
       lista.appendChild(li);
       return li;
     });
 
     var vacio = document.createElement('li');
     vacio.className = 'vacio';
-    vacio.textContent = 'No hay electrolineras que coincidan con la búsqueda.';
+    vacio.textContent = 'No hay electrolineras que coincidan con la búsqueda o los filtros.';
     vacio.hidden = true;
     vacio.setAttribute('data-sin-resultados', '');
     lista.appendChild(vacio);
     return items;
   }
 
-  // Buscador por nombre, operador o dirección: filtra marcadores y lista.
-  function conectarBuscador(marcadores, items) {
+  // Ficha en el panel: abrir desde lista, marcador o enlace /mapa/#<id>.
+  function conectarFicha(marcadores, items) {
+    var contenedorFicha = panel.querySelector('[data-ficha]');
+    var porId = {};
+    marcadores.forEach(function (m) { porId[m.feature.properties.id] = m; });
+    var activo = null;
+    var origenFoco = null;
+
+    function centrar(m) {
+      clearTimeout(esperaEncuadre);
+      var zoom = Math.max(mapa.getZoom(), 15);
+      var punto = mapa.project(m.getLatLng(), zoom);
+      // En móvil la hoja inferior tapa parte del mapa: se sube el marcador.
+      if (movil.matches) punto = punto.add([0, contenedorFicha.offsetHeight / 2]);
+      mapa.flyTo(mapa.unproject(punto, zoom), zoom, { duration: 0.8 });
+    }
+
+    function abrir(m, opciones) {
+      opciones = opciones || {};
+      if (activo) {
+        activo.setIcon(icono(activo.feature.properties));
+        activo.setZIndexOffset(0);
+        if (activo.item) activo.item.boton.setAttribute('aria-pressed', 'false');
+      }
+      activo = m;
+      var p = m.feature.properties;
+      m.setIcon(icono(p, true));
+      m.setZIndexOffset(1000);
+      if (m.item) m.item.boton.setAttribute('aria-pressed', 'true');
+
+      contenedorFicha.innerHTML = ficha(m.feature);
+      contenedorFicha.hidden = false;
+      contenedorFicha.removeAttribute('data-expandida');
+      contenedorFicha.scrollTop = 0;
+      panel.setAttribute('data-con-ficha', '');
+      if (location.hash !== '#' + p.id) history.replaceState(null, '', '#' + p.id);
+      document.title = titulo(p) + ' | Electrolineras | Perulineras';
+      if (!capa.hasLayer(m)) capa.addLayer(m);
+      centrar(m);
+      if (!opciones.sinFoco) contenedorFicha.querySelector('#ficha-titulo').focus({ preventScroll: true });
+    }
+
+    function cerrar() {
+      if (!activo) return;
+      activo.setIcon(icono(activo.feature.properties));
+      activo.setZIndexOffset(0);
+      if (activo.item) activo.item.boton.setAttribute('aria-pressed', 'false');
+      activo = null;
+      contenedorFicha.hidden = true;
+      contenedorFicha.innerHTML = '';
+      panel.removeAttribute('data-con-ficha');
+      history.replaceState(null, '', location.pathname + location.search);
+      document.title = tituloOriginal;
+      if (origenFoco && document.contains(origenFoco)) origenFoco.focus({ preventScroll: movil.matches });
+    }
+
+    var tituloOriginal = document.title;
+
+    marcadores.forEach(function (m) {
+      m.on('click', function () {
+        origenFoco = null;
+        abrir(m, { sinFoco: movil.matches });
+      });
+    });
+    items.forEach(function (li) {
+      li.boton.addEventListener('click', function () {
+        origenFoco = li.boton;
+        if (movil.matches) window.scrollTo({ top: 0, behavior: 'smooth' });
+        abrir(li.marcador, { sinFoco: movil.matches });
+      });
+    });
+
+    contenedorFicha.addEventListener('click', function (e) {
+      if (e.target.closest('[data-cerrar]')) cerrar();
+      else if (e.target.closest('[data-asa]')) contenedorFicha.toggleAttribute('data-expandida');
+      else if (e.target.closest('[data-compartir]')) compartir(e.target.closest('[data-compartir]'));
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && activo && !document.querySelector('.nav.abierto')) cerrar();
+    });
+
+    // Hoja inferior: deslizar hacia arriba la expande; hacia abajo la reduce o la cierra.
+    var inicioY = null;
+    contenedorFicha.addEventListener('touchstart', function (e) {
+      inicioY = (e.target.closest('[data-asa]') || contenedorFicha.scrollTop === 0) ? e.touches[0].clientY : null;
+    }, { passive: true });
+    contenedorFicha.addEventListener('touchend', function (e) {
+      if (inicioY === null || !movil.matches) return;
+      var dy = e.changedTouches[0].clientY - inicioY;
+      inicioY = null;
+      if (dy < -40) contenedorFicha.setAttribute('data-expandida', '');
+      else if (dy > 40) {
+        if (contenedorFicha.hasAttribute('data-expandida')) contenedorFicha.removeAttribute('data-expandida');
+        else cerrar();
+      }
+    }, { passive: true });
+
+    function compartir(boton) {
+      var p = activo.feature.properties;
+      var url = location.origin + '/mapa/#' + p.id;
+      if (navigator.share) {
+        navigator.share({ title: titulo(p) + ' · Perulineras', url: url }).catch(function () {});
+        return;
+      }
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(function () {
+          boton.textContent = 'Enlace copiado';
+          setTimeout(function () { boton.textContent = 'Compartir'; }, 2000);
+        });
+      }
+    }
+
+    function abrirDesdeHash() {
+      var id = decodeURIComponent(location.hash.slice(1));
+      if (porId[id]) abrir(porId[id], { sinFoco: true });
+      else if (!id && activo) cerrar();
+    }
+    window.addEventListener('hashchange', abrirDesdeHash);
+
+    return { abrirDesdeHash: abrirDesdeHash };
+  }
+
+  // Búsqueda y filtros: actúan sobre marcadores y lista a la vez.
+  function conectarFiltros(marcadores, items) {
     var buscador = document.querySelector('[data-buscador]');
     var sinResultados = document.querySelector('[data-sin-resultados]');
-    if (!buscador) return;
+    var gruposCarga = document.querySelector('[data-filtro-carga]');
+    var gruposConector = document.querySelector('[data-filtro-conector]');
+    var selectorLocalidad = document.querySelector('[data-filtro-localidad]');
+    var resultado = document.querySelector('[data-resultado]');
+    var limpiar = document.querySelector('[data-limpiar]');
+    var estado = { q: '', carga: '', conectores: [], localidad: '' };
 
-    var espera;
-    buscador.addEventListener('input', function () {
-      var q = buscador.value.trim().toLowerCase();
+    // Opciones de filtro a partir de los datos disponibles (solo las que existen).
+    function contar(clave) {
+      var cuenta = {};
+      marcadores.forEach(function (m) {
+        clave(m.feature.properties).forEach(function (v) { if (v) cuenta[v] = (cuenta[v] || 0) + 1; });
+      });
+      return cuenta;
+    }
+    if (gruposConector) {
+      var porTipo = contar(function (p) {
+        return (p.conectores || []).map(function (c) { return c.tipo; }).filter(function (t, i, a) { return a.indexOf(t) === i; });
+      });
+      Object.keys(porTipo).sort(function (a, b) { return porTipo[b] - porTipo[a]; }).forEach(function (tipo) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'chip-filtro';
+        b.setAttribute('aria-pressed', 'false');
+        b.setAttribute('data-valor', tipo);
+        b.innerHTML = esc(nombreConector(tipo)) + ' <span class="chip-cuenta">' + porTipo[tipo] + '</span>';
+        gruposConector.appendChild(b);
+      });
+    }
+    if (selectorLocalidad) {
+      var porLocalidad = contar(function (p) { return [p.localidad]; });
+      Object.keys(porLocalidad).sort(function (a, b) { return a.localeCompare(b, 'es'); }).forEach(function (loc) {
+        var o = document.createElement('option');
+        o.value = loc;
+        o.textContent = loc + ' (' + porLocalidad[loc] + ')';
+        selectorLocalidad.appendChild(o);
+      });
+    }
+
+    function coincide(m) {
+      var p = m.feature.properties;
+      if (estado.q && m.texto.indexOf(estado.q) === -1) return false;
+      if (estado.carga && (p.corriente || '').indexOf(estado.carga) === -1) return false;
+      if (estado.localidad && p.localidad !== estado.localidad) return false;
+      if (estado.conectores.length && !(p.conectores || []).some(function (c) {
+        return estado.conectores.indexOf(c.tipo) !== -1;
+      })) return false;
+      return true;
+    }
+
+    function aplicar() {
       var visibles = [];
       marcadores.forEach(function (m) {
-        var ok = !q || m.texto.indexOf(q) !== -1;
-        if (ok) { capa.addLayer(m); visibles.push(m); } else { capa.removeLayer(m); }
+        if (coincide(m)) { capa.addLayer(m); visibles.push(m); } else { capa.removeLayer(m); }
       });
       items.forEach(function (li) { li.hidden = !capa.hasLayer(li.marcador); });
       if (sinResultados) sinResultados.hidden = visibles.length > 0;
+      var filtrando = estado.carga || estado.localidad || estado.conectores.length;
+      if (resultado) {
+        resultado.textContent = (filtrando || estado.q)
+          ? visibles.length + ' de ' + marcadores.length + ' electrolineras'
+          : marcadores.length + ' electrolineras';
+      }
+      if (limpiar) limpiar.hidden = !filtrando;
 
-      clearTimeout(espera);
-      espera = setTimeout(function () {
-        if (q && visibles.length) mapa.fitBounds(capa.getBounds(), { padding: [40, 40], maxZoom: 15 });
-        else if (!q) mapa.fitBounds(PERU, { padding: [8, 8] });
+      clearTimeout(esperaEncuadre);
+      esperaEncuadre = setTimeout(function () {
+        if ((filtrando || estado.q) && visibles.length) mapa.fitBounds(capa.getBounds(), { padding: [40, 40], maxZoom: 15 });
+        else if (!filtrando && !estado.q) mapa.fitBounds(PERU, { padding: [8, 8] });
       }, 350);
-    });
+    }
+
+    if (buscador) {
+      buscador.addEventListener('input', function () {
+        estado.q = buscador.value.trim().toLowerCase();
+        aplicar();
+      });
+    }
+    if (gruposCarga) {
+      gruposCarga.addEventListener('click', function (e) {
+        var b = e.target.closest('button');
+        if (!b) return;
+        gruposCarga.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+        estado.carga = b.getAttribute('data-valor');
+        aplicar();
+      });
+    }
+    if (gruposConector) {
+      gruposConector.addEventListener('click', function (e) {
+        var b = e.target.closest('button');
+        if (!b) return;
+        var activo = b.getAttribute('aria-pressed') !== 'true';
+        b.setAttribute('aria-pressed', String(activo));
+        estado.conectores = Array.prototype.filter.call(gruposConector.querySelectorAll('button'), function (x) {
+          return x.getAttribute('aria-pressed') === 'true';
+        }).map(function (x) { return x.getAttribute('data-valor'); });
+        aplicar();
+      });
+    }
+    if (selectorLocalidad) {
+      selectorLocalidad.addEventListener('change', function () {
+        estado.localidad = selectorLocalidad.value;
+        aplicar();
+      });
+    }
+    if (limpiar) {
+      limpiar.addEventListener('click', function () {
+        estado.carga = '';
+        estado.localidad = '';
+        estado.conectores = [];
+        document.querySelectorAll('[data-filtro-carga] button, [data-filtro-conector] button').forEach(function (b) {
+          b.setAttribute('aria-pressed', String(b.getAttribute('data-valor') === '' && b.parentNode === gruposCarga));
+        });
+        if (selectorLocalidad) selectorLocalidad.value = '';
+        aplicar();
+      });
+    }
+    if (resultado) resultado.textContent = marcadores.length + ' electrolineras';
   }
 })();
